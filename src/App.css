@@ -1,0 +1,35 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat&display=swap); /* montserrat */
+@import url(https://use.typekit.net/jur8lgk.css); /* orbitron, shuriken-std */
+
+.ui.dashboard.container {
+  margin-top: 3em;
+}
+
+.ui.content.container {
+  margin-top: 6em;
+  margin-bottom: 2.6em;
+}
+
+.ui.button {
+  font-family: orbitron, sans-serif !important;
+}
+
+.montserrat {
+    font-family: montserrat, sans-serif !important;
+  }
+
+.orbitron {
+  font-family: orbitron, sans-serif !important;
+}
+
+.headline-1 {
+  font-family: shuriken-std, sans-serif !important;
+  font-size: 330%;
+  font-style: normal;
+}
+
+.headline-2 {
+  font-family: shuriken-std, sans-serif !important;
+  font-size: 470%;
+  font-style: normal;
+}
