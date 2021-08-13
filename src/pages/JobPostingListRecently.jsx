@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import JobPostingService from "./../services/jobPostingService";
-import { Divider, Card, Label, Icon, Button } from "semantic-ui-react";
+import { Divider, Card, Label, Icon, Rating } from "semantic-ui-react";
 
 export default function JobPostingListRecently() {
   const [jobPostings, setJobPostings] = useState([]);
@@ -9,7 +9,8 @@ export default function JobPostingListRecently() {
   let jobPostingService = new JobPostingService();
 
   useEffect(() => {
-    jobPostingService.getAllActiveOnesSortedByPostingDateTop6().then((result) => setJobPostings(result.data.data));
+    jobPostingService
+      .getAllActiveOnesSortedByPostingDateTop6().then((result) => setJobPostings(result.data.data));
   }, []);
 
   return (
@@ -22,9 +23,12 @@ export default function JobPostingListRecently() {
 
       <Card.Group itemsPerRow="3">
         {jobPostings.map((jobPosting) => (
-          <Card raised key={jobPosting.id}>
+          <Card raised key={jobPosting.id} as={NavLink} to={"#"}>
             <Card.Content>
-              <Card.Header>{jobPosting.jobTitle?.title}</Card.Header>
+              <Card.Header className="montserrat">
+                <Icon name="bell outline" color="yellow" />{" "}
+                {jobPosting.jobTitle?.title}
+              </Card.Header>
               <Card.Meta>
                 {jobPosting.employer?.companyName}
                 <br />
@@ -41,16 +45,8 @@ export default function JobPostingListRecently() {
                 {new Date(jobPosting.closingDate).toDateString()}
               </Card.Description>
             </Card.Content>
-            <Card.Content>
-              <Icon name="bell outline" size="big" color="yellow" />
-              <Button
-                circular
-                floated="right"
-                color="violet"
-                as={NavLink}
-                to={"#"}
-                content="View Detail"
-              />
+            <Card.Content textAlign="right">
+              <Rating maxRating={1} defaultRating={0} icon="star" size="huge" />
             </Card.Content>
           </Card>
         ))}

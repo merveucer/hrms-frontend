@@ -10,6 +10,14 @@
   margin-bottom: 2.6em;
 }
 
+.ui.footer.container {
+  margin-top: 3.5em;
+}
+
+.ui.headline.container {
+  margin-bottom: 1.8em;
+}
+
 .ui.view-all-job-postings-by-posting-date.container {
   margin-top: 3.5em;
   margin-bottom: 3.5em;
@@ -20,8 +28,8 @@
 }
 
 .montserrat {
-    font-family: montserrat, sans-serif !important;
-  }
+  font-family: montserrat, sans-serif !important;
+}
 
 .orbitron {
   font-family: orbitron, sans-serif !important;
