@@ -1,5 +1,6 @@
 import React from "react";
-import Headline from './Headline';
+import Headline from "./Headline";
+import EmployerList from "../pages/EmployerList";
 import { Container } from "semantic-ui-react";
 
 export default function EmployerLayout() {
@@ -7,6 +8,8 @@ export default function EmployerLayout() {
     <div>
       <Container className="content">
         <Headline content="Employers" />
+        
+        <EmployerList />
       </Container>
     </div>
   );
