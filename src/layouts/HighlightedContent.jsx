@@ -15,7 +15,7 @@ export default function HighlightedContent() {
             <Divider hidden />
             <Segment basic>
               <Header color="violet" as="h1" textAlign="right">
-                <span className="headline-1">Look for a</span>
+                <span className="headline-1">Find a new</span>
               </Header>
               <br />
               <Header color="pink" as="h1" textAlign="right">

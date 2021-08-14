@@ -37,7 +37,7 @@
 
 .headline-1 {
   font-family: shuriken-std, sans-serif !important;
-  font-size: 330%;
+  font-size: 300%;
   font-style: normal;
 }
 
@@ -45,4 +45,22 @@
   font-family: shuriken-std, sans-serif !important;
   font-size: 470%;
   font-style: normal;
+}
+
+.detail-header {
+  font-family: orbitron, sans-serif !important;
+  font-size: 130%;
+}
+
+.detail-date {
+  float: right;
+  margin-bottom: 1em;
+}
+
+.job-posting-favorite {
+  float: right;
+}
+
+.extra {
+  color: darkgrey;
 }
