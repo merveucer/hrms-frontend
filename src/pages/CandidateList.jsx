@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from "react";
-import CandidateService from "./../services/candidateService";
+import { NavLink } from "react-router-dom";
+import ResumeService from "./../services/resumeService";
 import { Card, Image, Button } from "semantic-ui-react";
 
 export default function CandidateList() {
   const [resumes, setResumes] = useState([]);
 
-  let candidateService = new CandidateService();
+  let resumeService = new ResumeService();
 
   useEffect(() => {
-    candidateService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
+    resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
   }, []);
 
   return (
     <div>
       <Card.Group itemsPerRow="4">
         {resumes.map((resume) => (
-          <Card raised key={resume.id} href="#">
-            <Card.Content textAlign="center">
+          <Card raised key={resume.id}>
+            <Card.Content textAlign="center" as={NavLink} to={"#"}>
               <br />
               <Image circular size="small" src={resume.image?.url} />
               <br />
@@ -32,7 +33,7 @@ export default function CandidateList() {
             </Card.Content>
             <Card.Content extra textAlign="center">
               {resume.links.map((link) =>
-                link.linkName?.id == 1 
+                link.linkName?.id == 1
                 ? (<Button compact circular icon="github" color="black" href={link.url} />)
                 : (<Button compact circular icon="linkedin" color="linkedin" href={link.url} />)
               )}

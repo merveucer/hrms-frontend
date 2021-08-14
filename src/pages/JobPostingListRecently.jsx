@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import JobPostingService from "./../services/jobPostingService";
-import { Divider, Card, Label, Icon, Rating } from "semantic-ui-react";
+import { Divider, Card, Label, Icon, Rating, Button } from "semantic-ui-react";
 
 export default function JobPostingListRecently() {
   const [jobPostings, setJobPostings] = useState([]);
@@ -9,12 +9,11 @@ export default function JobPostingListRecently() {
   let jobPostingService = new JobPostingService();
 
   useEffect(() => {
-    jobPostingService
-      .getAllActiveOnesSortedByPostingDateTop6().then((result) => setJobPostings(result.data.data));
+    jobPostingService.getAllActiveOnesSortedByPostingDateTop6().then((result) => setJobPostings(result.data.data));
   }, []);
 
   return (
-    <div className="montserrat">
+    <div>
       <Divider horizontal>
         <Icon name="history" /> Recently Posted
       </Divider>
@@ -23,30 +22,32 @@ export default function JobPostingListRecently() {
 
       <Card.Group itemsPerRow="3">
         {jobPostings.map((jobPosting) => (
-          <Card raised key={jobPosting.id} as={NavLink} to={"#"}>
+          <Card raised key={jobPosting.id} className="montserrat">
             <Card.Content>
+              <Rating maxRating={1} defaultRating={0} icon="star" size="huge" className="job-posting-favorite" />
               <Card.Header className="montserrat">
-                <Icon name="bell outline" color="yellow" />{" "}
                 {jobPosting.jobTitle?.title}
               </Card.Header>
               <Card.Meta>
                 {jobPosting.employer?.companyName}
                 <br />
-                <strong>Number of Open Positions </strong>
-                <Label circular color="pink" className="orbitron">
-                  {jobPosting.numberOfOpenPositions}
-                </Label>
+                <strong>Number of Open Positions</strong>
+                &nbsp;
+                <Label circular color="pink" className="orbitron" content={jobPosting.numberOfOpenPositions} />
               </Card.Meta>
               <Card.Description className="orbitron">
-                <strong>Posting Date </strong>
+                <strong>Posting Date</strong>
+                &nbsp;&nbsp;
                 {new Date(jobPosting.postingDate).toDateString()}
                 <br />
-                <strong>Closing Date </strong>
+                <strong>Closing Date</strong>
+                &nbsp;&nbsp;
                 {new Date(jobPosting.closingDate).toDateString()}
               </Card.Description>
             </Card.Content>
-            <Card.Content textAlign="right">
-              <Rating maxRating={1} defaultRating={0} icon="star" size="huge" />
+            <Card.Content>
+              <Icon name="fire" size="big" color="yellow" />
+              <Button circular floated="right" color="violet" content="View Detail" as={NavLink} to={`/jobPostings/jobPosting/${jobPosting.id}`} />
             </Card.Content>
           </Card>
         ))}

@@ -1,6 +1,6 @@
 import axios from "axios";
 
- export default class CandidateService {
+export default class ResumeService {
 
     getAllResumesDetailsByActivatedCandidate() {
         return axios.get("http://localhost:8080/api/resumes/getAllResumesDetailsByActivatedCandidate");

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Card, Header } from "semantic-ui-react";
 import EmployerService from "./../services/employerService";
+import { Card, Header } from "semantic-ui-react";
 
 export default function EmployerList() {
   const [employers, setEmployers] = useState([]);
@@ -16,15 +16,12 @@ export default function EmployerList() {
     <div>
       <Card.Group itemsPerRow="2">
         {employers.map((employer) => (
-          <Card raised key={employer.id} as={NavLink} to={"#"}>
-            <Card.Content textAlign="center">
+          <Card raised key={employer.id}>
+            <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}`}>
               <Card.Header>
-                <Header as="h3" color="violet" className="montserrat" content={employer.companyName} />
+                <Header as="h3" color="violet" className="montserrat" content={employer.companyName} />              
               </Card.Header>
-              <Card.Meta>
-                <Header></Header>
-                {employer.webAddress}
-              </Card.Meta>
+              <Card.Meta content={employer.webAddress} />
             </Card.Content>
           </Card>
         ))}
