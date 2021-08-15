@@ -295,7 +295,7 @@ export default function JobPostingAdd() {
           open={open}
           size="small"
         >
-          <Header icon>
+          <Header icon as="h1" className="orbitron">
             <Icon name="check circle outline" />
             Added and awaiting confirmation !!!
           </Header>

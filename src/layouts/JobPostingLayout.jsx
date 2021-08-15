@@ -9,7 +9,7 @@ export default function JobPostingLayout() {
       <Container className="content">
         <Headline content="Job Postings" />
 
-        <JobPostingList />
+        <JobPostingList type="all" itemsPerRow="3" />
       </Container>
     </div>
   );

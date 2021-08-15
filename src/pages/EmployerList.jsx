@@ -13,19 +13,17 @@ export default function EmployerList() {
   }, []);
 
   return (
-    <div>
-      <Card.Group itemsPerRow="2">
-        {employers.map((employer) => (
-          <Card raised key={employer.id}>
-            <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}`}>
-              <Card.Header>
-                <Header as="h3" color="violet" content={employer.companyName} />              
-              </Card.Header>
-              <Card.Meta content={employer.webAddress} />
-            </Card.Content>
-          </Card>
-        ))}
-      </Card.Group>
-    </div>
+    <Card.Group itemsPerRow="2">
+      {employers.map((employer) => (
+        <Card raised key={employer.id}>
+          <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}`}>
+            <Card.Header>
+              <Header as="h3" color="violet" content={employer.companyName} />
+            </Card.Header>
+            <Card.Meta content={employer.webAddress} />
+          </Card.Content>
+        </Card>
+      ))}
+    </Card.Group>
   );
 }

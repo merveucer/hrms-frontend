@@ -1,6 +1,6 @@
 import React from "react";
 import Headline from "./Headline";
-import { Container, Header, Grid, Icon } from "semantic-ui-react";
+import { Container, Header, Grid } from "semantic-ui-react";
 
 export default function AboutUsLayout() {
   return (
@@ -12,10 +12,7 @@ export default function AboutUsLayout() {
           <Grid.Row>
             <Grid.Column width="3" />
             <Grid.Column width="10">
-              <Header as="h2" color="violet" className="orbitron">
-                <Icon name="cube" />
-                HRMS
-              </Header>
+              <Header as="h1" color="violet" className="orbitron"  icon="cube" content="HRMS" />
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem

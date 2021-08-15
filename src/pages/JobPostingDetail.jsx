@@ -31,9 +31,7 @@ export default function JobPostingDetail() {
                       <Grid.Row>
                         <Grid.Column width="2" />
                         <Grid.Column width="12">
-                          <span className="orbitron">
-                            {new Date(jobPosting.postingDate).toDateString()}
-                          </span>
+                          <span className="orbitron">{new Date(jobPosting.postingDate).toDateString()}</span>
                         </Grid.Column>
                         <Grid.Column width="2" />
                       </Grid.Row>

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import Headline from "./../layouts/Headline";
 import ResumeService from "./../services/resumeService";
-import { Container, Grid, Header, Image, Segment, Divider, Icon, Label, Button} from "semantic-ui-react";
+import GithubButton from './../layouts/GithubButton';
+import LinkedinButton from './../layouts/LinkedinButton';
+import { Container, Grid, Header, Image, Segment, Divider, Icon, Label } from "semantic-ui-react";
 
 export default function CandidateDetail() {
   let { id } = useParams();
@@ -26,7 +28,7 @@ export default function CandidateDetail() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <Grid key={resume.id}>
-                  {resume.candidate?.id == id ? (
+                  {resume.candidate?.id === id ? (
                     <Grid.Row>
                       <Grid.Column>
                         <Segment basic>
@@ -36,7 +38,7 @@ export default function CandidateDetail() {
                               {resume.candidate?.firstName} {resume.candidate?.lastName}
                             </span>
                           </Header>
-                          {resume.experiences.length == 0
+                          {resume.experiences.length === 0
                             ? resume.educations[0].department
                             : resume.experiences[0].jobTitle?.title}
                           <br />
@@ -45,10 +47,9 @@ export default function CandidateDetail() {
                           <br />
                           <br />
                           {resume.links.map((link) =>
-                            link.linkName?.id == 1 
-                            ? (<Button compact circular icon="github" color="black" href={link.url} target="blank" />)
-                            : (<Button compact circular icon="linkedin" color="linkedin" href={link.url} target="blank" />
-                            )
+                            link.linkName?.id === 1 
+                            ? (<GithubButton url={link.url} />)
+                            : (<LinkedinButton url={link.url} />)
                           )}
                           <Divider />
                           <br />
@@ -58,9 +59,7 @@ export default function CandidateDetail() {
                               <Grid.Row>
                                 <Grid.Column width="2" />
                                 <Grid.Column width="12">
-                                  <span className="orbitron">
-                                    {new Date(resume.creationDate).toDateString()}
-                                  </span>
+                                  <span className="orbitron">{new Date(resume.creationDate).toDateString()}</span>
                                 </Grid.Column>
                                 <Grid.Column width="2" />
                               </Grid.Row>
@@ -91,7 +90,7 @@ export default function CandidateDetail() {
                                 <span className="extra">
                                   {new Date(education.startingDate).getFullYear()}
                                   &nbsp;-&nbsp;
-                                  {education.graduationDate == "Devam ediyor."
+                                  {education.graduationDate === "Devam ediyor."
                                     ? "Continues"
                                     : new Date(education.graduationDate).getFullYear()}
                                 </span>
@@ -106,14 +105,14 @@ export default function CandidateDetail() {
                             <br />
                             {resume.experiences.map((experience) => (
                               <span>
-                                <strong>{experience.companyName}</strong>
+                                <strong>{experience.jobTitle?.title}</strong>
                                 <br />
-                                {experience.jobTitle?.title}
+                                {experience.companyName}
                                 <br />
                                 <span className="extra">
                                   {new Date(experience.startingDate).getMonth()}.{new Date(experience.startingDate).getFullYear()}
                                   &nbsp;-&nbsp;
-                                  {experience.terminationDate == "Devam ediyor."
+                                  {experience.terminationDate === "Devam ediyor."
                                     ? "Continues"
                                     : new Date(experience.terminationDate).getMonth() + "." + new Date(experience.terminationDate).getFullYear()}
                                 </span>
@@ -128,7 +127,7 @@ export default function CandidateDetail() {
                             <br />
                             {resume.languageLevels.map((languageLevel) => (
                               <span>
-                                <strong>{languageLevel.language?.language}</strong> <span className="extra">{languageLevel.level?.level}</span>
+                                {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
                                 <br />
                                 <br />
                               </span>
@@ -140,7 +139,7 @@ export default function CandidateDetail() {
                             <br />
                             {resume.skills.map((skill) => (
                               <span>
-                                <strong>{skill.skill}</strong>
+                                {skill.skill}
                                 &nbsp;&nbsp;&nbsp;
                               </span>
                             ))}

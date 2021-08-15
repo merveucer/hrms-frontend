@@ -1,20 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import JobPostingService from "./../services/jobPostingService";
-import { Card, Label, Button, Rating } from "semantic-ui-react";
+import { Card, Label, Button, Rating, Icon } from "semantic-ui-react";
 
-export default function JobPostingList() {
+export default function JobPostingList({type, itemsPerRow}) {
   const [jobPostings, setJobPostings] = useState([]);
 
   let jobPostingService = new JobPostingService();
 
   useEffect(() => {
-    jobPostingService.getAllActiveOnesSortedByPostingDate().then((result) => setJobPostings(result.data.data));
+    if (type === "all") {
+      jobPostingService.getAllActiveOnesSortedByPostingDate().then((result) => setJobPostings(result.data.data)); 
+    } else if (type === "recently") {
+      jobPostingService.getAllActiveOnesSortedByPostingDateTop6().then((result) => setJobPostings(result.data.data));
+    } else {
+      jobPostingService.getAllActiveOnesByEmployerId(type).then((result) => setJobPostings(result.data.data));
+    }
   }, []);
 
   return (
     <div>
-      <Card.Group itemsPerRow="3">
+      <Card.Group itemsPerRow={itemsPerRow}>
         {jobPostings.map((jobPosting) => (
           <Card raised key={jobPosting.id}>
             <Card.Content>
@@ -40,6 +46,7 @@ export default function JobPostingList() {
               </Card.Description>
             </Card.Content>
             <Card.Content>
+              {type === "recently" ? (<Icon name="fire" size="big" color="yellow" />) : null}
               <Button circular floated="right" color="violet" content="View Detail" as={NavLink} to={`/jobPostings/jobPosting/${jobPosting.id}`} />
             </Card.Content>
           </Card>

@@ -15,23 +15,21 @@ import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
   return (
-    <div>
-      <Container className="dashboard">
-        <Navi />
+    <Container className="dashboard">
+      <Navi />
 
-        <Route exact path="/" component={HomeLayout} />
-        <Route exact path="/home" component={HomeLayout} />
-        <Route exact path="/jobPostings" component={JobPostingLayout} />
-        <Route exact path="/jobPostings/jobPosting/:id" component={JobPostingDetail} />
-        <Route exact path="/jobPosting/add" component={JobPostingAdd} />
-        <Route exact path="/candidates" component={CandidateLayout} />
-        <Route exact path="/candidates/candidate/:id" component={CandidateDetail} />
-        <Route exact path="/employers" component={EmployerLayout} />
-        <Route exact path="/employers/employer/:id" component={EmployerDetail} />
-        <Route exact path="/aboutUs" component={AboutUsLayout} />
+      <Route exact path="/" component={HomeLayout} />
+      <Route exact path="/home" component={HomeLayout} />
+      <Route exact path="/jobPostings" component={JobPostingLayout} />
+      <Route exact path="/jobPostings/jobPosting/:id" component={JobPostingDetail} />
+      <Route exact path="/jobPosting/add" component={JobPostingAdd} />
+      <Route exact path="/candidates" component={CandidateLayout} />
+      <Route exact path="/candidates/candidate/:id" component={CandidateDetail} />
+      <Route exact path="/employers" component={EmployerLayout} />
+      <Route exact path="/employers/employer/:id" component={EmployerDetail} />
+      <Route exact path="/aboutUs" component={AboutUsLayout} />
 
-        <Footer />
-      </Container>
-    </div>
+      <Footer />
+    </Container>
   );
 }
