@@ -9,7 +9,7 @@ export default function Footer() {
         <Divider />
         <br />
 
-        <Grid className="montserrat">
+        <Grid>
           <Grid.Row centered>
             <List link horizontal>
               <List.Item as={NavLink} to="/home">
@@ -36,9 +36,7 @@ export default function Footer() {
                 <Icon name="github" size="large" />
               </List.Item>
               <List.Item
-                href="https://www.linkedin.com/in/merveucer/"
-                target="blank"
-              >
+                href="https://www.linkedin.com/in/merveucer/" target="blank">
                 <Icon name="linkedin" size="large" />
               </List.Item>
             </List>

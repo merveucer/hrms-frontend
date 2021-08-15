@@ -29,7 +29,7 @@ export default function CandidateDetail() {
                   {resume.candidate?.id == id ? (
                     <Grid.Row>
                       <Grid.Column>
-                        <Segment basic className="montserrat">
+                        <Segment basic>
                           <Image circular inline size="small" src={resume.image?.url} />
                           <Header>
                             <span className="detail-header">
@@ -69,7 +69,7 @@ export default function CandidateDetail() {
                           <br />
                           <br />
 
-                          <Segment raised className="montserrat">
+                          <Segment raised>
                             <Header as="h5" content="Cover Letter" className="orbitron" />
                             <br />
                             {resume.coverLetter?.content}
@@ -77,7 +77,7 @@ export default function CandidateDetail() {
                             <br />
                           </Segment>
 
-                          <Segment raised className="montserrat">
+                          <Segment raised>
                             <Header as="h5" content="Educations" className="orbitron" />
                             <br />
                             {resume.educations.map((education) => (
@@ -101,7 +101,7 @@ export default function CandidateDetail() {
                             ))}
                           </Segment>
 
-                          <Segment raised className="montserrat">
+                          <Segment raised>
                             <Header as="h5" content="Experiences" className="orbitron" />
                             <br />
                             {resume.experiences.map((experience) => (
@@ -123,7 +123,7 @@ export default function CandidateDetail() {
                             ))}
                           </Segment>
 
-                          <Segment raised className="montserrat">
+                          <Segment raised>
                             <Header as="h5" content="Languages" className="orbitron" />
                             <br />
                             {resume.languageLevels.map((languageLevel) => (
@@ -135,7 +135,7 @@ export default function CandidateDetail() {
                             ))}
                           </Segment>
 
-                          <Segment raised className="montserrat">
+                          <Segment raised>
                             <Header as="h5" content="Skills" className="orbitron" />
                             <br />
                             {resume.skills.map((skill) => (

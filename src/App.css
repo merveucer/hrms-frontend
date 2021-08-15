@@ -1,6 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Montserrat&display=swap); /* montserrat */
 @import url(https://use.typekit.net/jur8lgk.css); /* orbitron, shuriken-std */
 
+.ui {
+  font-family: montserrat, sans-serif !important;
+}
+
 .ui.dashboard.container {
   margin-top: 3em;
 }

@@ -212,7 +212,8 @@ export default function JobPostingAdd() {
                   <Form.Field>
                     <Form.TextArea
                       name="jobDescription"
-                      placeholder="Write the job description..."
+                      label="Job Description"
+                      placeholder=". . ."
                       onChange={(event, data) => handleChange("jobDescription", data.value)}
                       onBlur={formik.onBlur}
                       value={formik.values.jobDescription}

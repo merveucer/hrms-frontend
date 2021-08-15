@@ -29,7 +29,7 @@ export default function EmployerDetail() {
       <Container className="content">
         <Headline content="Employer" />
 
-        <Grid className="montserrat">
+        <Grid>
           <Grid.Row>
             <Grid.Column width="3" />
             <Grid.Column width="10">
@@ -70,7 +70,7 @@ export default function EmployerDetail() {
 
                   <Card.Group itemsPerRow="2">
                     {jobPostings.map((jobPosting) => (
-                      <Card raised key={jobPosting.id} className="montserrat">
+                      <Card raised key={jobPosting.id}>
                         <Card.Content>
                           <Rating
                             maxRating={1}

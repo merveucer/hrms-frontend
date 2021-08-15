@@ -25,7 +25,7 @@ export default function CandidateList() {
               <Card.Header className="montserrat">
                 {resume.candidate?.firstName} {resume.candidate?.lastName}
               </Card.Header>
-              <Card.Meta className="montserrat">
+              <Card.Meta>
                 {resume.experiences.length == 0
                   ? resume.educations[0].department
                   : resume.experiences[0].jobTitle?.title}

@@ -22,7 +22,7 @@ export default function JobPostingListRecently() {
 
       <Card.Group itemsPerRow="3">
         {jobPostings.map((jobPosting) => (
-          <Card raised key={jobPosting.id} className="montserrat">
+          <Card raised key={jobPosting.id}>
             <Card.Content>
               <Rating maxRating={1} defaultRating={0} icon="star" size="huge" className="job-posting-favorite" />
               <Card.Header className="montserrat">

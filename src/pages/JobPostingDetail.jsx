@@ -25,7 +25,7 @@ export default function JobPostingDetail() {
             <Grid.Column width="3" />
             <Grid.Column width="10">
               <Grid.Row>
-                <Segment basic className="montserrat">
+                <Segment basic>
                   <Label circular basic color="pink" className="detail-date">
                     <Grid>
                       <Grid.Row>

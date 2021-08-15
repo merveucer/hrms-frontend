@@ -5,7 +5,7 @@ import { Menu, Container, Header, Icon, Button } from "semantic-ui-react";
 export default function Navi() {
   return (
     <div>
-      <Menu borderless fixed="top" className="montserrat">
+      <Menu borderless fixed="top">
         <Container>
           <Menu.Item color="violet" position="left">
             <Header as="h4" color="violet" className="orbitron">

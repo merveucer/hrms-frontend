@@ -19,7 +19,7 @@ export default function EmployerList() {
           <Card raised key={employer.id}>
             <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}`}>
               <Card.Header>
-                <Header as="h3" color="violet" className="montserrat" content={employer.companyName} />              
+                <Header as="h3" color="violet" content={employer.companyName} />              
               </Card.Header>
               <Card.Meta content={employer.webAddress} />
             </Card.Content>

@@ -4,7 +4,7 @@ import { Container, Header, Grid, Icon } from "semantic-ui-react";
 
 export default function AboutUsLayout() {
   return (
-    <div className="montserrat">
+    <div>
       <Container className="content">
         <Headline content="About Us" />
 
