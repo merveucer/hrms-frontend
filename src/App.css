@@ -19,6 +19,7 @@
 }
 
 .ui.headline.container {
+  margin-top: 7em;
   margin-bottom: 1.8em;
 }
 
@@ -56,7 +57,7 @@
   font-size: 130%;
 }
 
-.detail-date {
+.date {
   float: right;
   margin-bottom: 1em;
 }

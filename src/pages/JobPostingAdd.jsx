@@ -8,6 +8,7 @@ import CityService from "../services/cityService";
 import WorkingTimeService from "../services/workingTimeService";
 import WorkingTypeService from "../services/workingTypeService";
 import EmployerService from "../services/employerService";
+import DateLabel from './../layouts/DateLabel';
 import { Container, Header, Grid, Label, Form, Button, Modal, Icon } from "semantic-ui-react";
 
 export default function JobPostingAdd() {
@@ -17,7 +18,7 @@ export default function JobPostingAdd() {
   const [workingTimes, setWorkingTimes] = useState([]);
   const [workingTypes, setWorkingTypes] = useState([]);
 
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   let jobPostingService = new JobPostingService();
   let employerService = new EmployerService();
@@ -122,21 +123,7 @@ export default function JobPostingAdd() {
           <Grid.Row>
             <Grid.Column width="3" />
             <Grid.Column width="10">
-              <span className="detail-date">
-                <Label circular basic color="pink">
-                  <Grid>
-                    <Grid.Row>
-                      <Grid.Column width="1" />
-                      <Grid.Column width="12">
-                        <span className="orbitron">
-                          {new Date().toDateString()}
-                        </span>
-                      </Grid.Column>
-                      <Grid.Column width="1" />
-                    </Grid.Row>
-                  </Grid>
-                </Label>
-              </span>
+              <DateLabel value={new Date().toDateString()} />
 
               <Formik>
                 <Form onSubmit={formik.handleSubmit}>
@@ -295,9 +282,9 @@ export default function JobPostingAdd() {
           open={open}
           size="small"
         >
-          <Header icon as="h1" className="orbitron">
+          <Header icon as="h2" className="orbitron">
             <Icon name="check circle outline" />
-            Added and awaiting confirmation !!!
+            Added and awaiting confirmation !
           </Header>
         </Modal>
       </Container>

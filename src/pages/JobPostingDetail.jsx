@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import JobPostingService from "./../services/jobPostingService";
 import Headline from "../layouts/Headline";
+import DateLabel from './../layouts/DateLabel';
 import { Container, Header, Grid, Divider, Icon, Label, Rating, Segment} from "semantic-ui-react";
 
 export default function JobPostingDetail() {
@@ -26,17 +27,7 @@ export default function JobPostingDetail() {
             <Grid.Column width="10">
               <Grid.Row>
                 <Segment basic>
-                  <Label circular basic color="pink" className="detail-date">
-                    <Grid>
-                      <Grid.Row>
-                        <Grid.Column width="2" />
-                        <Grid.Column width="12">
-                          <span className="orbitron">{new Date(jobPosting.postingDate).toDateString()}</span>
-                        </Grid.Column>
-                        <Grid.Column width="2" />
-                      </Grid.Row>
-                    </Grid>
-                  </Label>
+                  <DateLabel value={new Date(jobPosting.postingDate).toDateString()} />
                   <br />
                   
                   <Header>

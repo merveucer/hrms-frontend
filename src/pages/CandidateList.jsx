@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ResumeService from "./../services/resumeService";
 import GithubButton from "./../layouts/GithubButton";
 import LinkedinButton from "./../layouts/LinkedinButton";
-import { Card, Image } from "semantic-ui-react";
+import { Card, Divider, Image } from "semantic-ui-react";
 
 export default function CandidateList() {
   const [resumes, setResumes] = useState([]);
@@ -20,24 +20,30 @@ export default function CandidateList() {
         <Card raised key={resume.id}>
           <Card.Content textAlign="center" as={NavLink} to={`/candidates/candidate/${resume.candidate?.id}`}>
             <br />
-            <Image circular size="small" src={resume.image?.url} />
+            {resume.image == null
+            ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629118407/user_sbrweq.svg" />
+            : <Image circular size="small" src={resume.image?.url} />}            
             <br />
             <br />
             <Card.Header className="montserrat">
               {resume.candidate?.firstName} {resume.candidate?.lastName}
             </Card.Header>
             <Card.Meta>
-              {resume.experiences.length === 0
+              {resume.experiences.length === 0 && resume.educations.length === 0
+              ? <br />
+              : (resume.experiences.length === 0
                 ? resume.educations[0].department
-                : resume.experiences[0].jobTitle?.title}
+                : resume.experiences[0].jobTitle?.title)}
             </Card.Meta>
           </Card.Content>
           <Card.Content extra textAlign="center">
-            {resume.links.map((link) =>
-              link.linkName?.id === 1 
+            {resume.links.length === 0
+            ? <Divider hidden />
+            : (resume.links.map((link) =>
+              (link.linkName?.id === 1 
               ? (<GithubButton url={link.url} />)
-              : (<LinkedinButton url={link.url} />)
-            )}
+              : (<LinkedinButton url={link.url} />))
+            ))}
           </Card.Content>
         </Card>
       ))}

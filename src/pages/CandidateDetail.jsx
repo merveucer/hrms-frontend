@@ -4,6 +4,7 @@ import Headline from "./../layouts/Headline";
 import ResumeService from "./../services/resumeService";
 import GithubButton from './../layouts/GithubButton';
 import LinkedinButton from './../layouts/LinkedinButton';
+import DateLabel from './../layouts/DateLabel';
 import { Container, Grid, Header, Image, Segment, Divider, Icon, Label } from "semantic-ui-react";
 
 export default function CandidateDetail() {
@@ -28,55 +29,52 @@ export default function CandidateDetail() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <Grid key={resume.id}>
-                  {resume.candidate?.id === id ? (
+                  {resume.candidate?.id == id ? (
                     <Grid.Row>
                       <Grid.Column>
                         <Segment basic>
-                          <Image circular inline size="small" src={resume.image?.url} />
+                        {resume.image == null
+                        ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629119560/user_c9yzyn.svg" />
+                        : <Image circular size="small" src={resume.image?.url} />}
                           <Header>
                             <span className="detail-header">
                               {resume.candidate?.firstName} {resume.candidate?.lastName}
                             </span>
                           </Header>
-                          {resume.experiences.length === 0
-                            ? resume.educations[0].department
-                            : resume.experiences[0].jobTitle?.title}
-                          <br />
+                          {resume.experiences.length === 0 && resume.educations.length === 0
+                          ? null
+                          : (resume.experiences.length === 0
+                            ? (<span>{resume.educations[0].department}<br /></span>)
+                            : (<span>{resume.experiences[0].jobTitle?.title}<br /></span>))}
                           <Icon name="envelope" />
                           {resume.candidate?.email}
                           <br />
-                          <br />
-                          {resume.links.map((link) =>
-                            link.linkName?.id === 1 
+                          {resume.links.length === 0
+                          ? null
+                          : <span><br />{(resume.links.map((link) =>
+                            (link.linkName?.id === 1 
                             ? (<GithubButton url={link.url} />)
-                            : (<LinkedinButton url={link.url} />)
-                          )}
+                            : (<LinkedinButton url={link.url} />))))}</span>}
                           <Divider />
                           <br />
 
-                          <Label circular basic color="pink" className="detail-date">
-                            <Grid>
-                              <Grid.Row>
-                                <Grid.Column width="2" />
-                                <Grid.Column width="12">
-                                  <span className="orbitron">{new Date(resume.creationDate).toDateString()}</span>
-                                </Grid.Column>
-                                <Grid.Column width="2" />
-                              </Grid.Row>
-                            </Grid>
-                          </Label>
-                          <br />
-                          <br />
+                          {resume.coverLetter === null && resume.educations.length === 0 && resume.experiences.length === 0 && resume.links.length === 0 && resume.skills.length === 0
+                          ? null
+                          : <span><DateLabel value={new Date(resume.creationDate).toDateString()} /><br /><br /></span>}
 
-                          <Segment raised>
+                          {resume.coverLetter === null
+                          ? null
+                          : <Segment raised>
                             <Header as="h5" content="Cover Letter" className="orbitron" />
                             <br />
                             {resume.coverLetter?.content}
                             <br />
                             <br />
-                          </Segment>
+                          </Segment>}
 
-                          <Segment raised>
+                          {resume.educations.length === 0
+                          ? null
+                          : <Segment raised>
                             <Header as="h5" content="Educations" className="orbitron" />
                             <br />
                             {resume.educations.map((education) => (
@@ -98,9 +96,11 @@ export default function CandidateDetail() {
                                 <br />
                               </span>
                             ))}
-                          </Segment>
+                          </Segment>}
 
-                          <Segment raised>
+                          {resume.experiences.length === 0
+                          ? null
+                          : <Segment raised>
                             <Header as="h5" content="Experiences" className="orbitron" />
                             <br />
                             {resume.experiences.map((experience) => (
@@ -120,9 +120,11 @@ export default function CandidateDetail() {
                                 <br />
                               </span>
                             ))}
-                          </Segment>
+                          </Segment>}
 
-                          <Segment raised>
+                          {resume.links.length === 0
+                          ? null
+                          : <Segment raised>
                             <Header as="h5" content="Languages" className="orbitron" />
                             <br />
                             {resume.languageLevels.map((languageLevel) => (
@@ -132,9 +134,11 @@ export default function CandidateDetail() {
                                 <br />
                               </span>
                             ))}
-                          </Segment>
+                          </Segment>}
 
-                          <Segment raised>
+                          {resume.skills.length === 0
+                          ? null
+                          : <Segment raised>
                             <Header as="h5" content="Skills" className="orbitron" />
                             <br />
                             {resume.skills.map((skill) => (
@@ -145,7 +149,7 @@ export default function CandidateDetail() {
                             ))}
                             <br />
                             <br />
-                          </Segment>
+                          </Segment>}
                         </Segment>
                       </Grid.Column>
                     </Grid.Row>

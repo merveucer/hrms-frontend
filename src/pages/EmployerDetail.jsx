@@ -4,6 +4,7 @@ import EmployerService from "./../services/employerService";
 import UserActivationService from "./../services/userActivationService";
 import Headline from "../layouts/Headline";
 import JobPostingList from "./JobPostingList";
+import DateLabel from './../layouts/DateLabel';
 import { Container, Header, Grid, Divider, Icon, Label, Segment} from "semantic-ui-react";
 
 export default function EmployerDetail() {
@@ -31,17 +32,7 @@ export default function EmployerDetail() {
             <Grid.Column width="10">
               <Grid.Row>
                 <Segment basic>
-                  <Label circular basic color="pink" className="detail-date">
-                    <Grid>
-                      <Grid.Row>
-                        <Grid.Column width="2" />
-                        <Grid.Column width="12">
-                          <span className="orbitron">Joined in {new Date(userActivation.isActivatedDate).getFullYear()}</span>
-                        </Grid.Column>
-                        <Grid.Column width="2" />
-                      </Grid.Row>
-                    </Grid>
-                  </Label>
+                  <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
                   <br />
                   
                   <Header>
