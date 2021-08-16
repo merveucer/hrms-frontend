@@ -9,10 +9,10 @@ export default function ViewAllJobPostingsByPostingDate() {
         <Grid.Row centered>
           <Reveal animated="rotate">
             <Reveal.Content visible>
-              <Image circular size="small" src="time.svg" />
+              <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629119568/time_qsf6do.svg" />
             </Reveal.Content>
             <Reveal.Content hidden>
-              <Image circular size="small" src="now.svg" />
+              <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629119560/now_mtb4qy.svg" />
             </Reveal.Content>
           </Reveal>
         </Grid.Row>
