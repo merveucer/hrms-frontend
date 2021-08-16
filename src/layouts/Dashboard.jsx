@@ -11,6 +11,8 @@ import JobPostingDetail from "./../pages/JobPostingDetail";
 import CandidateDetail from "./../pages/CandidateDetail";
 import EmployerDetail from "./../pages/EmployerDetail";
 import JobPostingAdd from "./../pages/JobPostingAdd";
+import CandidateAdd from './../pages/CandidateAdd';
+import EmployerAdd from './../pages/EmployerAdd';
 import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
@@ -25,8 +27,10 @@ export default function Dashboard() {
       <Route exact path="/jobPosting/add" component={JobPostingAdd} />
       <Route exact path="/candidates" component={CandidateLayout} />
       <Route exact path="/candidates/candidate/:id" component={CandidateDetail} />
+      <Route exact path="/candidate/add" component={CandidateAdd} />
       <Route exact path="/employers" component={EmployerLayout} />
       <Route exact path="/employers/employer/:id" component={EmployerDetail} />
+      <Route exact path="/employer/add" component={EmployerAdd} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
 
       <Footer />

@@ -69,3 +69,9 @@
 .extra {
   color: darkgrey;
 }
+
+.or {
+  font-family: orbitron, sans-serif !important;
+  color: white;
+  text-align: center;
+}

@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Menu, Container, Header, Button } from "semantic-ui-react";
+import LogIn from "./LogIn";
+import SignUp from "./SignUp";
+import { Menu, Container, Header } from "semantic-ui-react";
 
 export default function Navi() {
   return (
@@ -15,11 +17,11 @@ export default function Navi() {
         <Menu.Item as={NavLink} to="/employers" icon="building outline" content="Employers" />
         <Menu.Item as={NavLink} to="/aboutUs" icon="heart outline" content="About Us" />
         <Menu.Menu position="right">
-          <Menu.Item>
-            <Button circular color="pink" content="Log-in" />
+          <Menu.Item position="right">
+            <LogIn />
           </Menu.Item>
-          <Menu.Item>
-            <Button circular color="yellow" content="Sign up" />
+          <Menu.Item position="right">
+            <SignUp />
           </Menu.Item>
         </Menu.Menu>
       </Container>
