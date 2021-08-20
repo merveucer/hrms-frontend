@@ -4,7 +4,8 @@ import * as Yup from "yup";
 import Headline from "./../layouts/Headline";
 import AuthService from "./../services/authService";
 import DateLabel from "./../layouts/DateLabel";
-import { Container, Header, Grid, Label, Form, Button, Modal, Icon } from "semantic-ui-react";
+import MessageModal from "./../layouts/MessageModal";
+import { Container, Grid, Label, Form, Button } from "semantic-ui-react";
 
 export default function CandidateAdd() {
   const [open, setOpen] = useState(false);
@@ -70,7 +71,7 @@ export default function CandidateAdd() {
                   <Form.Field>
                     <Form.Input
                       name="firstName"
-                      placeholder="First Name"
+                      label="First Name"
                       onChange={(event, data) => handleChange("firstName", data.value)}
                       onBlur={formik.onBlur}
                       value={formik.values.firstName}
@@ -82,7 +83,7 @@ export default function CandidateAdd() {
                   <Form.Field>
                     <Form.Input
                       name="lastName"
-                      placeholder="Last Name"
+                      label="Last Name"
                       onChange={(event, data) => handleChange("lastName", data.value)}
                       onBlur={formik.onBlur}
                       value={formik.values.lastName}
@@ -136,7 +137,7 @@ export default function CandidateAdd() {
                   <Form.Field>
                     <Form.Input
                       name="password"
-                      placeholder="Password"
+                      label="Password"
                       onChange={(event, data) => handleChange("password", data.value)}
                       onBlur={formik.onBlur}
                       value={formik.values.password}
@@ -148,7 +149,7 @@ export default function CandidateAdd() {
                   <Form.Field>
                     <Form.Input
                       name="confirmPassword"
-                      placeholder="Confirm Password"
+                      label="Confirm Password"
                       onChange={(event, data) => handleChange("confirmPassword", data.value)}
                       onBlur={formik.onBlur}
                       value={formik.values.confirmPassword}
@@ -158,6 +159,7 @@ export default function CandidateAdd() {
                     : null}
                   </Form.Field>
 
+                  <br />
                   <Button circular fluid type="submit" color="yellow" content="Sign up" />
                 </Form>
               </Formik>
@@ -166,19 +168,7 @@ export default function CandidateAdd() {
           </Grid.Row>
         </Grid>
 
-        <Modal
-          basic
-          dimmer
-          onClose={() => handleModal(false)}
-          onOpen={() => handleModal(true)}
-          open={open}
-          size="small"
-        >
-          <Header icon as="h2" className="orbitron">
-            <Icon name="check circle outline" />
-            An activation e-mail has been sent !
-          </Header>
-        </Modal>
+        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="An activation e-mail has been sent !" />
       </Container>
     </div>
   );

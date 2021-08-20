@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import { useParams } from "react-router";
 import Headline from "./../layouts/Headline";
 import ResumeService from "./../services/resumeService";
 import GithubButton from './../layouts/GithubButton';
 import LinkedinButton from './../layouts/LinkedinButton';
 import DateLabel from './../layouts/DateLabel';
-import { Container, Grid, Header, Image, Segment, Divider, Icon, Label } from "semantic-ui-react";
+import { Container, Grid, Header, Image, Segment, Divider, Icon, Button } from "semantic-ui-react";
 
 export default function CandidateDetail() {
   let { id } = useParams();
@@ -53,14 +54,13 @@ export default function CandidateDetail() {
                           ? null
                           : <span><br />{(resume.links.map((link) =>
                             (link.linkName?.id === 1 
-                            ? (<GithubButton url={link.url} />)
+                            ? (<span><GithubButton url={link.url} /></span>)
                             : (<LinkedinButton url={link.url} />))))}</span>}
-                          <Divider />
-                          <br />
+                          <Divider />                          
 
-                          {resume.coverLetter === null && resume.educations.length === 0 && resume.experiences.length === 0 && resume.links.length === 0 && resume.skills.length === 0
+                          {resume.coverLetter === null && resume.educations.length === 0 && resume.experiences.length === 0 && resume.languageLevels.length === 0 && resume.skills.length === 0
                           ? null
-                          : <span><DateLabel value={new Date(resume.creationDate).toDateString()} /><br /><br /></span>}
+                          : <span><br /><DateLabel value={new Date(resume.creationDate).toDateString()} /><br /><br /></span>}
 
                           {resume.coverLetter === null
                           ? null
@@ -122,7 +122,7 @@ export default function CandidateDetail() {
                             ))}
                           </Segment>}
 
-                          {resume.links.length === 0
+                          {resume.languageLevels.length === 0
                           ? null
                           : <Segment raised>
                             <Header as="h5" content="Languages" className="orbitron" />

@@ -8,8 +8,10 @@ import CityService from "../services/cityService";
 import WorkingTimeService from "../services/workingTimeService";
 import WorkingTypeService from "../services/workingTypeService";
 import EmployerService from "../services/employerService";
-import DateLabel from './../layouts/DateLabel';
-import { Container, Header, Grid, Label, Form, Button, Modal, Icon } from "semantic-ui-react";
+import DateLabel from "./../layouts/DateLabel";
+import MessageModal from "./../layouts/MessageModal";
+import { Container, Grid, Label, Form, Button} from "semantic-ui-react";
+
 
 export default function JobPostingAdd() {
   const [employers, setEmployers] = useState([]);
@@ -84,7 +86,7 @@ export default function JobPostingAdd() {
     city: Yup.object().required(),
     workingTime: Yup.object().required(),
     workingType: Yup.object().required(),
-    jobDescription: Yup.string().required(),
+    jobDescription: Yup.string().max("2300").required(),
     numberOfOpenPositions: Yup.number().required(),
     salaryMin: Yup.string(),
     salaryMax: Yup.string(),
@@ -130,7 +132,8 @@ export default function JobPostingAdd() {
                   <Form.Field>
                     <Form.Select
                       name="employer"
-                      placeholder="Employer"
+                      label="Employer"
+                      placeholder=""
                       options={employerOptions}
                       onChange={(event, data) => handleChange("employer", data.value)}
                       onBlur={formik.onBlur}
@@ -144,7 +147,7 @@ export default function JobPostingAdd() {
                     <Form.Field>
                       <Form.Select
                         name="jobTitle"
-                        placeholder="Job Title"
+                        label="Job Title"
                         options={jobTitleOptions}
                         onChange={(event, data) => handleChange("jobTitle", data.value)}
                         onBlur={formik.onBlur}
@@ -157,7 +160,7 @@ export default function JobPostingAdd() {
                     <Form.Field>
                       <Form.Select
                         name="city"
-                        placeholder="City"
+                        label="City"
                         options={cityOptions}
                         onChange={(event, data) =>handleChange("city", data.value)}
                         onBlur={formik.onBlur}
@@ -172,7 +175,7 @@ export default function JobPostingAdd() {
                     <Form.Field>
                       <Form.Select
                         name="workingTime"
-                        placeholder="Working Time"
+                        label="Working Time"
                         options={workingTimeOptions}
                         onChange={(event, data) => handleChange("workingTime", data.value)}
                         onBlur={formik.onBlur}
@@ -185,7 +188,7 @@ export default function JobPostingAdd() {
                     <Form.Field>
                       <Form.Select
                         name="workingType"
-                        placeholder="Working Type"
+                        label="Working Type"
                         options={workingTypeOptions}
                         onChange={(event, data) => handleChange("workingType", data.value)}
                         onBlur={formik.onBlur}
@@ -266,6 +269,7 @@ export default function JobPostingAdd() {
                     </Form.Field>
                   </Form.Group>
 
+                  <br />
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>
@@ -274,19 +278,7 @@ export default function JobPostingAdd() {
           </Grid.Row>
         </Grid>
 
-        <Modal
-          basic
-          dimmer
-          onClose={() => handleModal(false)}
-          onOpen={() => handleModal(true)}
-          open={open}
-          size="small"
-        >
-          <Header icon as="h2" className="orbitron">
-            <Icon name="check circle outline" />
-            Added and awaiting confirmation !
-          </Header>
-        </Modal>
+        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Added and awaiting confirmation !" />
       </Container>
     </div>
   );
