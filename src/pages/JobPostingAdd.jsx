@@ -19,7 +19,6 @@ export default function JobPostingAdd() {
   const [cities, setCities] = useState([]);
   const [workingTimes, setWorkingTimes] = useState([]);
   const [workingTypes, setWorkingTypes] = useState([]);
-
   const [open, setOpen] = useState(false);
 
   let jobPostingService = new JobPostingService();
@@ -129,144 +128,124 @@ export default function JobPostingAdd() {
 
               <Formik>
                 <Form onSubmit={formik.handleSubmit}>
-                  <Form.Field>
+                  <Form.Select
+                    name="employer"
+                    label="Employer"
+                    placeholder=""
+                    options={employerOptions}
+                    onChange={(event, data) => handleChange("employer", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.employer}
+                  />
+                  {formik.errors.employer && formik.touched.employer
+                  ? (<Label basic pointing color="pink" content={formik.errors.employer} />)
+                  : null}
+                  <Form.Group widths="equal">
                     <Form.Select
-                      name="employer"
-                      label="Employer"
-                      placeholder=""
-                      options={employerOptions}
-                      onChange={(event, data) => handleChange("employer", data.value)}
+                      name="jobTitle"
+                      label="Job Title"
+                      options={jobTitleOptions}
+                      onChange={(event, data) => handleChange("jobTitle", data.value)}
                       onBlur={formik.onBlur}
-                      value={formik.values.employer}
+                      value={formik.values.jobTitle}
                     />
-                    {formik.errors.employer && formik.touched.employer
-                    ? (<Label basic pointing color="pink" content={formik.errors.employer} />)
+                    {formik.errors.jobTitle && formik.touched.jobTitle
+                    ? (<Label basic pointing color="pink" content={formik.errors.jobTitle} />)
                     : null}
-                  </Form.Field>
-                  <Form.Group widths="equal">
-                    <Form.Field>
-                      <Form.Select
-                        name="jobTitle"
-                        label="Job Title"
-                        options={jobTitleOptions}
-                        onChange={(event, data) => handleChange("jobTitle", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.jobTitle}
-                      />
-                      {formik.errors.jobTitle && formik.touched.jobTitle
-                      ? (<Label basic pointing color="pink" content={formik.errors.jobTitle} />)
-                      : null}
-                    </Form.Field>
-                    <Form.Field>
-                      <Form.Select
-                        name="city"
-                        label="City"
-                        options={cityOptions}
-                        onChange={(event, data) =>handleChange("city", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.city}
-                      />
-                      {formik.errors.city && formik.touched.city
-                      ? (<Label basic pointing color="pink" content={formik.errors.city} />)
-                      : null}
-                    </Form.Field>
-                  </Form.Group>
-                  <Form.Group widths="equal">
-                    <Form.Field>
-                      <Form.Select
-                        name="workingTime"
-                        label="Working Time"
-                        options={workingTimeOptions}
-                        onChange={(event, data) => handleChange("workingTime", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.workingTime}
-                      />
-                      {formik.errors.workingTime && formik.touched.workingTime
-                      ? (<Label basic pointing color="pink" content={formik.errors.workingTime} />)
-                      : null}
-                    </Form.Field>
-                    <Form.Field>
-                      <Form.Select
-                        name="workingType"
-                        label="Working Type"
-                        options={workingTypeOptions}
-                        onChange={(event, data) => handleChange("workingType", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.workingType}
-                      />
-                      {formik.errors.workingType && formik.touched.workingType
-                      ? (<Label basic pointing color="pink" content={formik.errors.workingType} />)
-                      : null}
-                    </Form.Field>
-                  </Form.Group>
-                  <Form.Field>
-                    <Form.TextArea
-                      name="jobDescription"
-                      label="Job Description"
-                      placeholder=". . ."
-                      onChange={(event, data) => handleChange("jobDescription", data.value)}
+                    <Form.Select
+                      name="city"
+                      label="City"
+                      options={cityOptions}
+                      onChange={(event, data) =>handleChange("city", data.value)}
                       onBlur={formik.onBlur}
-                      value={formik.values.jobDescription}
+                      value={formik.values.city}
                     />
-                    {formik.errors.jobDescription && formik.touched.jobDescription
-                    ? (<Label basic pointing color="pink" content={formik.errors.jobDescription} />)
+                    {formik.errors.city && formik.touched.city
+                    ? (<Label basic pointing color="pink" content={formik.errors.city} />)
                     : null}
-                  </Form.Field>
-                  <Form.Group widths="equal">
-                    <Form.Field>
-                      <Form.Input
-                        name="numberOfOpenPositions"
-                        label="Number of Open Positions"
-                        placeholder="1"
-                        onChange={(event, data) => handleChange("numberOfOpenPositions", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.numberOfOpenPositions}
-                      />
-                      {formik.errors.numberOfOpenPositions && formik.touched.numberOfOpenPositions
-                      ? (<Label basic pointing color="pink" content={formik.errors.numberOfOpenPositions} />)
-                      : null}
-                    </Form.Field>
-                    <Form.Field>
-                      <Form.Input
-                        name="closingDate"
-                        label="Closing Date"
-                        placeholder="YYYY-MM-DD"
-                        onChange={(event, data) => handleChange("closingDate", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.closingDate}
-                      />
-                      {formik.errors.closingDate && formik.touched.closingDate
-                      ? (<Label basic pointing color="pink" content={formik.errors.closingDate} />)
-                      : null}
-                    </Form.Field>
                   </Form.Group>
                   <Form.Group widths="equal">
-                    <Form.Field>
-                      <Form.Input
-                        name="salaryMin"
-                        label="Salary Min (Optional)"
-                        placeholder="5000 ₺"
-                        onChange={(event, data) => handleChange("salaryMin", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.salaryMin}
-                      />
-                      {formik.errors.salaryMin && formik.touched.salaryMin
-                      ? (<Label basic pointing color="pink" content={formik.errors.salaryMin} />)
-                      : null}
-                    </Form.Field>
-                    <Form.Field>
-                      <Form.Input
-                        name="salaryMax"
-                        label="Salary Max (Optional)"
-                        placeholder="10000 ₺"
-                        onChange={(event, data) => handleChange("salaryMax", data.value)}
-                        onBlur={formik.onBlur}
-                        value={formik.values.salaryMax}
-                      />
-                      {formik.errors.salaryMax && formik.touched.salaryMax
-                      ? (<Label basic pointing color="pink" content={formik.errors.salaryMax} />)
-                      : null}
-                    </Form.Field>
+                    <Form.Select
+                      name="workingTime"
+                      label="Working Time"
+                      options={workingTimeOptions}
+                      onChange={(event, data) => handleChange("workingTime", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.workingTime}
+                    />
+                    {formik.errors.workingTime && formik.touched.workingTime
+                    ? (<Label basic pointing color="pink" content={formik.errors.workingTime} />)
+                    : null}
+                    <Form.Select
+                      name="workingType"
+                      label="Working Type"
+                      options={workingTypeOptions}
+                      onChange={(event, data) => handleChange("workingType", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.workingType}
+                    />
+                    {formik.errors.workingType && formik.touched.workingType
+                    ? (<Label basic pointing color="pink" content={formik.errors.workingType} />)
+                    : null}
+                  </Form.Group>
+                  <Form.TextArea
+                    name="jobDescription"
+                    label="Job Description"
+                    placeholder=". . ."
+                    onChange={(event, data) => handleChange("jobDescription", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.jobDescription}
+                  />
+                  {formik.errors.jobDescription && formik.touched.jobDescription
+                  ? (<Label basic pointing color="pink" content={formik.errors.jobDescription} />)
+                  : null}
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      name="numberOfOpenPositions"
+                      label="Number of Open Positions"
+                      placeholder="1"
+                      onChange={(event, data) => handleChange("numberOfOpenPositions", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.numberOfOpenPositions}
+                    />
+                    {formik.errors.numberOfOpenPositions && formik.touched.numberOfOpenPositions
+                    ? (<Label basic pointing color="pink" content={formik.errors.numberOfOpenPositions} />)
+                    : null}
+                    <Form.Input
+                      name="closingDate"
+                      label="Closing Date"
+                      placeholder="YYYY-MM-DD"
+                      onChange={(event, data) => handleChange("closingDate", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.closingDate}
+                    />
+                    {formik.errors.closingDate && formik.touched.closingDate
+                    ? (<Label basic pointing color="pink" content={formik.errors.closingDate} />)
+                    : null}
+                  </Form.Group>
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      name="salaryMin"
+                      label="Salary Min (Optional)"
+                      placeholder="5000 ₺"
+                      onChange={(event, data) => handleChange("salaryMin", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.salaryMin}
+                    />
+                    {formik.errors.salaryMin && formik.touched.salaryMin
+                    ? (<Label basic pointing color="pink" content={formik.errors.salaryMin} />)
+                    : null}
+                    <Form.Input
+                      name="salaryMax"
+                      label="Salary Max (Optional)"
+                      placeholder="10000 ₺"
+                      onChange={(event, data) => handleChange("salaryMax", data.value)}
+                      onBlur={formik.onBlur}
+                      value={formik.values.salaryMax}
+                    />
+                    {formik.errors.salaryMax && formik.touched.salaryMax
+                    ? (<Label basic pointing color="pink" content={formik.errors.salaryMax} />)
+                    : null}
                   </Form.Group>
 
                   <br />

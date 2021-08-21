@@ -10,7 +10,7 @@ export default function SignUp() {
   };
 
   return (
-    <div>
+    <span>
       <Button
         circular
         color="yellow"
@@ -65,6 +65,6 @@ export default function SignUp() {
           </Grid>
         </Modal.Actions>
       </Modal>
-    </div>
+    </span>
   );
 }

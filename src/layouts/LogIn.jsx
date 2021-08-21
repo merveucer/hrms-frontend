@@ -8,8 +8,9 @@ export default function LogIn() {
   const handleModal = (value) => {
     setOpen(value);
   };
+  
   return (
-    <div>
+    <span>
       <Button
         circular
         color="pink"
@@ -64,6 +65,6 @@ export default function LogIn() {
           </Grid>
         </Modal.Actions>
       </Modal>
-    </div>
+    </span>
   );
 }

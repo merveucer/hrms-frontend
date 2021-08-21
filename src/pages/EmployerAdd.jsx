@@ -66,80 +66,68 @@ export default function EmployerAdd() {
 
               <Formik>
                 <Form onSubmit={formik.handleSubmit}>
-                  <Form.Field>
-                    <Form.Input
-                      name="companyName"
-                      label="Company Name"
-                      onChange={(event, data) => handleChange("companyName", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.companyName}
-                    />
-                    {formik.errors.companyName && formik.touched.companyName 
-                    ? (<Label basic pointing color="pink" content={formik.errors.companyName} />)
-                    : null}
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      name="phoneNumber"
-                      label="Phone Number"
-                      onChange={(event, data) => handleChange("phoneNumber", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.phoneNumber}
-                    />
-                    {formik.errors.phoneNumber && formik.touched.phoneNumber
-                    ? (<Label basic pointing color="pink" content={formik.errors.phoneNumber} />)
-                    : null}
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      name="webAddress"
-                      label="Web Address (The domains of the e-mail and web address must be the same.)"
-                      placeholder="example.com"
-                      onChange={(event, data) => handleChange("webAddress", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.webAddress}
-                    />
-                    {formik.errors.webAddress && formik.touched.webAddress
-                    ? (<Label basic pointing color="pink" content={formik.errors.webAddress} />)
-                    : null}
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      name="email"
-                      label="E-mail"
-                      placeholder="example@example.com"
-                      onChange={(event, data) => handleChange("email", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.email}
-                    />
-                    {formik.errors.email && formik.touched.email
-                    ? (<Label basic pointing color="pink" content={formik.errors.email} />)
-                    : null}
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      name="password"
-                      label="Password"
-                      onChange={(event, data) => handleChange("password", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.password}
-                    />
-                    {formik.errors.password && formik.touched.password
-                    ? (<Label basic pointing color="pink" content={formik.errors.password} />)
-                    : null}
-                  </Form.Field>
-                  <Form.Field>
-                    <Form.Input
-                      name="confirmPassword"
-                      label="Confirm Password"
-                      onChange={(event, data) => handleChange("confirmPassword", data.value)}
-                      onBlur={formik.onBlur}
-                      value={formik.values.confirmPassword}
-                    />
-                    {formik.errors.confirmPassword && formik.touched.confirmPassword
-                    ? (<Label basic pointing color="pink" content={formik.errors.confirmPassword} />)
-                    : null}
-                  </Form.Field>
+                  <Form.Input
+                    name="companyName"
+                    label="Company Name"
+                    onChange={(event, data) => handleChange("companyName", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.companyName}
+                  />
+                  {formik.errors.companyName && formik.touched.companyName 
+                  ? (<Label basic pointing color="pink" content={formik.errors.companyName} />)
+                  : null}
+                  <Form.Input
+                    name="phoneNumber"
+                    label="Phone Number"
+                    onChange={(event, data) => handleChange("phoneNumber", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.phoneNumber}
+                  />
+                  {formik.errors.phoneNumber && formik.touched.phoneNumber
+                  ? (<Label basic pointing color="pink" content={formik.errors.phoneNumber} />)
+                  : null}
+                  <Form.Input
+                    name="webAddress"
+                    label="Web Address (The domains of the e-mail and web address must be the same.)"
+                    placeholder="example.com"
+                    onChange={(event, data) => handleChange("webAddress", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.webAddress}
+                  />
+                  {formik.errors.webAddress && formik.touched.webAddress
+                  ? (<Label basic pointing color="pink" content={formik.errors.webAddress} />)
+                  : null}
+                  <Form.Input
+                    name="email"
+                    label="E-mail"
+                    placeholder="example@example.com"
+                    onChange={(event, data) => handleChange("email", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.email}
+                  />
+                  {formik.errors.email && formik.touched.email
+                  ? (<Label basic pointing color="pink" content={formik.errors.email} />)
+                  : null}
+                  <Form.Input
+                    name="password"
+                    label="Password"
+                    onChange={(event, data) => handleChange("password", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.password}
+                  />
+                  {formik.errors.password && formik.touched.password
+                  ? (<Label basic pointing color="pink" content={formik.errors.password} />)
+                  : null}
+                  <Form.Input
+                    name="confirmPassword"
+                    label="Confirm Password"
+                    onChange={(event, data) => handleChange("confirmPassword", data.value)}
+                    onBlur={formik.onBlur}
+                    value={formik.values.confirmPassword}
+                  />
+                  {formik.errors.confirmPassword && formik.touched.confirmPassword
+                  ? (<Label basic pointing color="pink" content={formik.errors.confirmPassword} />)
+                  : null}
 
                   <br />
                   <Button circular fluid type="submit" color="yellow" content="Sign up" />

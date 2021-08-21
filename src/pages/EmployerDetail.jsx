@@ -31,28 +31,26 @@ export default function EmployerDetail() {
             <Grid.Column width="3" />
             <Grid.Column width="10">
               <Grid.Row>
-                <Segment basic>
-                  <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
-                  <br />
+                <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
+                <br />
                   
-                  <Header>
-                    <span className="detail-header">
-                      <strong>{employer.companyName}</strong>
-                    </span>
-                  </Header>
-                  <Icon name="linkify" />
-                  {employer.webAddress}
-                  <br />
-                  <Icon name="envelope" />
-                  {employer.email}
-                  <br />
-                  <Icon name="phone" />
-                  {employer.phoneNumber}
-                  <Divider />
-                  <br />
+                <Header>
+                  <span className="detail-header">
+                    <strong>{employer.companyName}</strong>
+                  </span>
+                </Header>
+                <Icon name="linkify" />
+                {employer.webAddress}
+                <br />
+                <Icon name="envelope" />
+                {employer.email}
+                <br />
+                <Icon name="phone" />
+                {employer.phoneNumber}
+                <Divider />
+                <br />
 
-                  <JobPostingList type={id} itemsPerRow="2" />
-                </Segment>
+                <JobPostingList type={id} itemsPerRow="2" />
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width="3" />

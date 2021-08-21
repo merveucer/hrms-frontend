@@ -31,19 +31,19 @@ export default function CandidateList() {
             <Card.Meta>
               {resume.experiences.length === 0 && resume.educations.length === 0
               ? <br />
-              : (resume.experiences.length === 0
+              : resume.experiences.length === 0
                 ? resume.educations[0].department
-                : resume.experiences[0].jobTitle?.title)}
+                : resume.experiences[0].jobTitle?.title}
             </Card.Meta>
           </Card.Content>
           <Card.Content extra textAlign="center">
             {resume.links.length === 0
             ? <Divider hidden />
-            : (resume.links.map((link) =>
+            : resume.links.map((link) =>
               (link.linkName?.id === 1 
-              ? (<GithubButton url={link.url} />)
-              : (<LinkedinButton url={link.url} />))
-            ))}
+              ? <GithubButton url={link.url} />
+              : <LinkedinButton url={link.url} />)
+            )}
           </Card.Content>
         </Card>
       ))}

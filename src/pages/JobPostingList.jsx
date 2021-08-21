@@ -46,7 +46,7 @@ export default function JobPostingList({ type, itemsPerRow }) {
           </Card.Content>
           <Card.Content>
             {type === "recently"
-            ? (<Icon name="fire" size="big" color="yellow" />)
+            ? <Icon name="fire" size="big" color="yellow" />
             : null}
             <Button circular floated="right" color="violet" content="View Detail" as={NavLink} to={`/jobPostings/jobPosting/${jobPosting.id}`} />
           </Card.Content>
