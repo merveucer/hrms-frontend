@@ -46,7 +46,7 @@ export default function CoverLetterEdit() {
   };
 
   const handleDelete = (coverLetterId) => {
-    coverLetterService.delete({id: coverLetterId});
+    coverLetterService.delete(coverLetterId);
     resumeService.update({id: 1});
     handleModalDelete(true);
   };

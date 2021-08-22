@@ -30,7 +30,7 @@ export default function ExperienceDeelet() {
   };
 
   const handleDelete = (experienceId) => {    
-    experienceService.delete({id: experienceId});
+    experienceService.delete(experienceId);
     resumeService.update({id: id});
     handleModal(true);
   };

@@ -6,8 +6,8 @@ export default class SkillService {
         return axios.post("http://localhost:8080/api/skills/add", values);
     }
 
-    delete(values) {
-        return axios.delete("http://localhost:8080/api/skills/delete", values);
+    delete(id) {
+        return axios.delete(`http://localhost:8080/api/skills/delete?id=${id}`);
     }
 
 }

@@ -6,8 +6,8 @@ export default class CoverLetterService {
         return axios.post("http://localhost:8080/api/coverLetters/add", values);
     }
 
-    delete(values) {
-        return axios.delete("http://localhost:8080/api/coverLetters/delete", values);
+    delete(id) {
+        return axios.delete(`http://localhost:8080/api/coverLetters/delete?id=${id}`);
     }
 
     getAllByCandidateId(candidateId) {

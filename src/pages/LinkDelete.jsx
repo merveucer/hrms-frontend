@@ -32,7 +32,7 @@ export default function LinkDelete() {
   };
 
   const handleDelete = (linkId) => {    
-    linkService.delete({id: linkId});
+    linkService.delete(linkId);
     resumeService.update({id: id});
     handleModal(true);
   };

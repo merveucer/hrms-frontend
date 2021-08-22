@@ -6,8 +6,8 @@ export default class LanguageLevelService {
         return axios.post("http://localhost:8080/api/languageLevels/add", values);
     }
 
-    delete(values) {
-        return axios.delete("http://localhost:8080/api/languageLevels/delete", values);
+    delete(id) {
+        return axios.delete(`http://localhost:8080/api/languageLevels/delete?id=${id}`);
     }
 
 }

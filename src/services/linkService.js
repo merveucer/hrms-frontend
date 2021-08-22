@@ -6,8 +6,8 @@ export default class LinkService {
         return axios.post("http://localhost:8080/api/links/add", values);
     }
 
-    delete(values) {
-        return axios.delete("http://localhost:8080/api/links/delete", values);
+    delete(id) {
+        return axios.delete(`http://localhost:8080/api/links/delete?id=${id}`);
     }
 
 }

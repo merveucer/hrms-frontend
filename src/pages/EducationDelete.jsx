@@ -30,7 +30,7 @@ export default function EducationDelete() {
   };
 
   const handleDelete = (educationId) => {    
-    educationService.delete({id: educationId});
+    educationService.delete(educationId);
     resumeService.update({id: id});
     handleModal(true);
   };

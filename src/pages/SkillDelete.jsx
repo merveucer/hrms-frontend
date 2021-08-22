@@ -30,7 +30,7 @@ export default function SkillDelete() {
   };
 
   const handleDelete = (skillId) => {    
-    skillService.delete({id: skillId});
+    skillService.delete(skillId);
     resumeService.update({id: id});
     handleModal(true);
   };

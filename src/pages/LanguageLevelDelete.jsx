@@ -30,7 +30,7 @@ export default function LanguageLevelDelete() {
   };
 
   const handleDelete = (languageLevelId) => {    
-    languageLevelService.delete({id: languageLevelId});
+    languageLevelService.delete(languageLevelId);
     resumeService.update({id: id});
     handleModal(true);
   };
