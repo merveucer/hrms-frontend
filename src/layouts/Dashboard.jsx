@@ -13,6 +13,19 @@ import EmployerDetail from "./../pages/EmployerDetail";
 import JobPostingAdd from "./../pages/JobPostingAdd";
 import CandidateAdd from './../pages/CandidateAdd';
 import EmployerAdd from './../pages/EmployerAdd';
+import ResumeDetailsEdit from './../pages/ResumeDetailsEdit';
+import LinkAdd from './../pages/LinkAdd';
+import CoverLetterAdd from './../pages/CoverLetterAdd';
+import EducationAdd from './../pages/EducationAdd';
+import ExperienceAdd from './../pages/ExperienceAdd';
+import LanguageLevelAdd from './../pages/LanguageLevelAdd';
+import SkillAdd from './../pages/SkillAdd';
+import LinkDelete from './../pages/LinkDelete';
+import CoverLetterEdit from './../pages/CoverLetterEdit';
+import EducationDelete from './../pages/EducationDelete';
+import ExperienceDelete from './../pages/ExperienceDelete';
+import LanguageLevelDelete from './../pages/LanguageLevelDelete';
+import SkillDelete from './../pages/SkillDelete';
 import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
@@ -32,6 +45,19 @@ export default function Dashboard() {
       <Route exact path="/employers/employer/:id" component={EmployerDetail} />
       <Route exact path="/employer/add" component={EmployerAdd} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
+      <Route exact path="/resumeDetails/edit/:id" component={ResumeDetailsEdit} />
+      <Route exact path="/link/add/:id" component={LinkAdd} />
+      <Route exact path="/link/delete/:id" component={LinkDelete} />
+      <Route exact path="/coverLetter/add/:id" component={CoverLetterAdd} />
+      <Route exact path="/coverLetter/edit/:id" component={CoverLetterEdit} />
+      <Route exact path="/education/add/:id" component={EducationAdd} />
+      <Route exact path="/education/delete/:id" component={EducationDelete} />
+      <Route exact path="/experience/add/:id" component={ExperienceAdd} />
+      <Route exact path="/experience/delete/:id" component={ExperienceDelete} />
+      <Route exact path="/languageLevel/add/:id" component={LanguageLevelAdd} />
+      <Route exact path="/languageLevel/delete/:id" component={LanguageLevelDelete} />
+      <Route exact path="/skill/add/:id" component={SkillAdd} />
+      <Route exact path="/skill/delete/:id" component={SkillDelete} />
 
       <Footer />
     </Container>

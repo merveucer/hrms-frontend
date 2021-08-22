@@ -32,7 +32,8 @@ export default function CandidateDetail() {
                 <Grid key={resume.id}>
                   {resume.candidate?.id == id ? (
                     <Grid.Row>
-                      <Grid.Column> 
+                      <Grid.Column>
+                        <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/resumeDetails/edit/${resume.id}`} /> 
                         {resume.image == null
                         ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629119560/user_c9yzyn.svg" />
                         : <Image circular size="small" src={resume.image?.url} />}
@@ -78,9 +79,7 @@ export default function CandidateDetail() {
                           <br />
                           {resume.educations.map((education) => (
                             <span>
-                              <strong>
-                                {education.nameOfEducationalInstitution}
-                              </strong>
+                              <strong>{education.nameOfEducationalInstitution}</strong>
                               <br />
                               {education.degree} ・ {education.department}
                               <br />
@@ -142,8 +141,8 @@ export default function CandidateDetail() {
                           <br />
                           {resume.skills.map((skill) => (
                             <span>
-                              {skill.skill}
-                              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              ・ {skill.skill}
+                              &nbsp;&nbsp;&nbsp;
                             </span>
                           ))}
                           <br />
