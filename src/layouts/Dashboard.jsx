@@ -26,6 +26,7 @@ import EducationDelete from './../pages/EducationDelete';
 import ExperienceDelete from './../pages/ExperienceDelete';
 import LanguageLevelDelete from './../pages/LanguageLevelDelete';
 import SkillDelete from './../pages/SkillDelete';
+import EmployerUpdate from './../pages/EmployerUpdate';
 import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
@@ -44,6 +45,7 @@ export default function Dashboard() {
       <Route exact path="/employers" component={EmployerLayout} />
       <Route exact path="/employers/employer/:id" component={EmployerDetail} />
       <Route exact path="/employer/add" component={EmployerAdd} />
+      <Route exact path="/employers/employer/update/:id" component={EmployerUpdate} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
       <Route exact path="/resumeDetails/edit/:id" component={ResumeDetailsEdit} />
       <Route exact path="/link/add/:id" component={LinkAdd} />
