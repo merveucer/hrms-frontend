@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import JobPostingService from "./../services/jobPostingService";
+import FavoriteJobPostingService from './../services/favoriteJobPostingService';
 import Headline from "../layouts/Headline";
 import DateLabel from './../layouts/DateLabel';
-import { Container, Header, Grid, Divider, Icon, Label, Rating, Segment} from "semantic-ui-react";
+import { Container, Header, Grid, Divider, Icon, Label, Button } from "semantic-ui-react";
 
 export default function JobPostingDetail() {
   let { id } = useParams();
@@ -11,10 +12,15 @@ export default function JobPostingDetail() {
   const [jobPosting, setJobPosting] = useState({});
 
   let jobPostingService = new JobPostingService();
+  let favoriteJobPostingService = new FavoriteJobPostingService();
 
   useEffect(() => {
     jobPostingService.getById(id).then((result) => setJobPosting(result.data.data));
   }, []);
+
+  const handleAddToFavorites = (jobPosting) => {
+    favoriteJobPostingService.add({jobPosting, candidate:{id: 8}}) // TODO: candidateId
+  };
 
   return (
     <div>
@@ -27,14 +33,13 @@ export default function JobPostingDetail() {
             <Grid.Column width="10">
               <Grid.Row>
                 <DateLabel value={new Date(jobPosting.postingDate).toDateString()} />
-                <br />
-                  
+                <br /><br /><br />
+                <Button compact circular size="medium" color="yellow" icon="bookmark" floated="right" onClick={() => handleAddToFavorites(jobPosting)} /> 
+              </Grid.Row>
+              <Grid.Row>                                 
                 <Header>
                   <span className="detail-header">
                     <strong>{jobPosting.jobTitle?.title}</strong>
-                  </span>
-                  <span className="job-posting-favorite">
-                    <Rating maxRating={1} defaultRating={0} icon="star" size="massive" />
                   </span>
                 </Header>
                 {jobPosting.employer?.companyName}

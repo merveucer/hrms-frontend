@@ -42,7 +42,7 @@ export default function EmployerDetail() {
 
                 {updatedEmployers.map((updatedEmployer) => (
                   updatedEmployer.employer.id == id 
-                  ? <Button circular compact disabled floated="right" content="Waiting for update confirmation." />
+                  ? <Button circular compact basic disabled color="black" floated="right" content="Waiting for update confirmation." />
                   : null
                 ))}                                
               </Grid.Row>
@@ -63,7 +63,7 @@ export default function EmployerDetail() {
                   <Divider />
                   <br />  
 
-                <JobPostingList type={id} itemsPerRow="2" />
+                <JobPostingList type="byEmployer" itemsPerRow="2" id={id} />
               </Grid.Row>
             </Grid.Column>
             <Grid.Column width="3" />

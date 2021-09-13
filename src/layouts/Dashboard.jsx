@@ -28,6 +28,7 @@ import LanguageLevelDelete from './../pages/LanguageLevelDelete';
 import SkillDelete from './../pages/SkillDelete';
 import EmployerUpdate from './../pages/EmployerUpdate';
 import { Container } from "semantic-ui-react";
+import FavoriteJobPostingLayout from './FavotireJobPostingLayout';
 
 export default function Dashboard() {
   return (
@@ -60,6 +61,7 @@ export default function Dashboard() {
       <Route exact path="/languageLevel/delete/:id" component={LanguageLevelDelete} />
       <Route exact path="/skill/add/:id" component={SkillAdd} />
       <Route exact path="/skill/delete/:id" component={SkillDelete} />
+      <Route exact path="/favoriteJobPostings/:id" component={FavoriteJobPostingLayout} />
 
       <Footer />
     </Container>
