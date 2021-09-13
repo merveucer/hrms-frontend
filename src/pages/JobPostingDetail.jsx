@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router";
 import JobPostingService from "./../services/jobPostingService";
 import FavoriteJobPostingService from './../services/favoriteJobPostingService';
 import Headline from "../layouts/Headline";
 import DateLabel from './../layouts/DateLabel';
+import MessageModal from "./../layouts/MessageModal";
 import { Container, Header, Grid, Divider, Icon, Label, Button } from "semantic-ui-react";
 
 export default function JobPostingDetail() {
   let { id } = useParams();
 
   const [jobPosting, setJobPosting] = useState({});
+  const [open, setOpen] = useState(false);
+
+  const history = useHistory();
 
   let jobPostingService = new JobPostingService();
   let favoriteJobPostingService = new FavoriteJobPostingService();
@@ -17,6 +21,15 @@ export default function JobPostingDetail() {
   useEffect(() => {
     jobPostingService.getById(id).then((result) => setJobPosting(result.data.data));
   }, []);
+
+  const handleModal = (value) => {
+    setOpen(value);
+  };
+
+  const handleMakeActiveOrPassive = (id, isActive) => {    
+    jobPostingService.makeActiveOrPassive(id, isActive);
+    handleModal(true);    
+  };
 
   const handleAddToFavorites = (jobPosting) => {
     favoriteJobPostingService.add({jobPosting, candidate:{id: 8}}) // TODO: candidateId
@@ -34,7 +47,8 @@ export default function JobPostingDetail() {
               <Grid.Row>
                 <DateLabel value={new Date(jobPosting.postingDate).toDateString()} />
                 <br /><br /><br />
-                <Button compact circular size="medium" color="yellow" icon="bookmark" floated="right" onClick={() => handleAddToFavorites(jobPosting)} /> 
+                <Button compact circular size="medium" color="yellow" icon="bookmark" floated="right" onClick={() => handleAddToFavorites(jobPosting)} />
+                <Button compact circular  color="violet" content="Make Passive" floated="right" onClick={() => handleMakeActiveOrPassive(jobPosting.id, false)} />                 
               </Grid.Row>
               <Grid.Row>                                 
                 <Header>
@@ -117,6 +131,8 @@ export default function JobPostingDetail() {
             <Grid.Column width="3" />
           </Grid.Row>
         </Grid>
+
+        <MessageModal onClose={() => history.push(`/employers/employer/${jobPosting.employer.id}`)} onOpen={() => handleModal(true)} open={open} content="Made passive !" />
       </Container>
     </div>
   );

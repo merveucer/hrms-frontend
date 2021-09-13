@@ -22,4 +22,8 @@ export default class JobPostingService {
         return axios.get(`http://localhost:8080/api/jobPostings/getAllActiveOnesByEmployerId?employerId=${employerId}`);
     }
 
+    makeActiveOrPassive(id, isActive) {
+        return axios.put(`http://localhost:8080/api/jobPostings/makeActiveOrPassive?id=${id}&isActive=${isActive}`)
+    }
+
 }
