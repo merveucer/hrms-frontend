@@ -27,8 +27,8 @@ import ExperienceDelete from './../pages/ExperienceDelete';
 import LanguageLevelDelete from './../pages/LanguageLevelDelete';
 import SkillDelete from './../pages/SkillDelete';
 import EmployerUpdate from './../pages/EmployerUpdate';
-import { Container } from "semantic-ui-react";
 import FavoriteJobPostingLayout from './FavotireJobPostingLayout';
+import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
   return (
@@ -42,26 +42,26 @@ export default function Dashboard() {
       <Route exact path="/jobPosting/add" component={JobPostingAdd} />
       <Route exact path="/candidates" component={CandidateLayout} />
       <Route exact path="/candidates/candidate/:id" component={CandidateDetail} />
+      <Route exact path="/candidates/candidate/:id/favoriteJobPostings" component={FavoriteJobPostingLayout} />
       <Route exact path="/candidate/add" component={CandidateAdd} />
       <Route exact path="/employers" component={EmployerLayout} />
       <Route exact path="/employers/employer/:id" component={EmployerDetail} />
+      <Route exact path="/employers/employer/:id/update" component={EmployerUpdate} />
       <Route exact path="/employer/add" component={EmployerAdd} />
-      <Route exact path="/employers/employer/update/:id" component={EmployerUpdate} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
-      <Route exact path="/resumeDetails/edit/:id" component={ResumeDetailsEdit} />
-      <Route exact path="/link/add/:id" component={LinkAdd} />
-      <Route exact path="/link/delete/:id" component={LinkDelete} />
-      <Route exact path="/coverLetter/add/:id" component={CoverLetterAdd} />
-      <Route exact path="/coverLetter/edit/:id" component={CoverLetterEdit} />
-      <Route exact path="/education/add/:id" component={EducationAdd} />
-      <Route exact path="/education/delete/:id" component={EducationDelete} />
-      <Route exact path="/experience/add/:id" component={ExperienceAdd} />
-      <Route exact path="/experience/delete/:id" component={ExperienceDelete} />
-      <Route exact path="/languageLevel/add/:id" component={LanguageLevelAdd} />
-      <Route exact path="/languageLevel/delete/:id" component={LanguageLevelDelete} />
-      <Route exact path="/skill/add/:id" component={SkillAdd} />
-      <Route exact path="/skill/delete/:id" component={SkillDelete} />
-      <Route exact path="/favoriteJobPostings/:id" component={FavoriteJobPostingLayout} />
+      <Route exact path="/resumeDetails/resume/:id/edit" component={ResumeDetailsEdit} />
+      <Route exact path="/resumeDetails/resume/:id/link/add" component={LinkAdd} />
+      <Route exact path="/resumeDetails/resume/:id/link/delete" component={LinkDelete} />
+      <Route exact path="/resumeDetails/resume/candidate/:id/coverLetter/add" component={CoverLetterAdd} />
+      <Route exact path="/resumeDetails/resume/candidate/:id/coverLetter/edit" component={CoverLetterEdit} />
+      <Route exact path="/resumeDetails/resume/:id/education/add" component={EducationAdd} />
+      <Route exact path="/resumeDetails/resume/:id/education/delete" component={EducationDelete} />
+      <Route exact path="/resumeDetails/resume/:id/experience/add" component={ExperienceAdd} />
+      <Route exact path="/resumeDetails/resume/:id/experience/delete" component={ExperienceDelete} />
+      <Route exact path="/resumeDetails/resume/:id/languageLevel/add" component={LanguageLevelAdd} />
+      <Route exact path="/resumeDetails/resume/:id/languageLevel/delete" component={LanguageLevelDelete} />
+      <Route exact path="/resumeDetails/resume/:id/skill/add" component={SkillAdd} />
+      <Route exact path="/resumeDetails/resume/:id/skill/delete" component={SkillDelete} />
 
       <Footer />
     </Container>

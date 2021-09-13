@@ -49,7 +49,7 @@ export default function EducationDelete() {
                   {resume.id == id ? (
                     <span key={resume.id}>
                       {resume.educations.length === 0
-                      ? <Segment textAlign="center" ><Header color="pink" content="No education has been added to the resume yet." /></Segment>
+                      ? <Segment raised textAlign="center" ><Header color="pink" content="No education has been added to the resume yet." /></Segment>
                       : <span>
                         <DateLabel value={new Date().toDateString()} />
                         <br /><br /><br />

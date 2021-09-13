@@ -33,10 +33,10 @@ export default function CandidateDetail() {
                   {resume.candidate?.id == id ? (
                     <Grid.Row>
                       <Grid.Column>
-                        <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/resumeDetails/edit/${resume.id}`} />
-                        <Button circular compact floated="right" color="pink" content="Favorites" as={NavLink} to={`/favoriteJobPostings/${resume.candidate?.id}`} />
+                        <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/resumeDetails/resume/${resume.id}/edit`} />
+                        <Button circular compact floated="right" color="pink" content="Favorites" as={NavLink} to={`/candidates/candidate/${resume.candidate?.id}/favoriteJobPostings`} />
                         {resume.image == null
-                        ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1629119560/user_c9yzyn.svg" />
+                        ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1631524660/user_cwuhzr.svg" />
                         : <Image circular size="small" src={resume.image?.url} />}
                         <Header>
                           <span className="detail-header">

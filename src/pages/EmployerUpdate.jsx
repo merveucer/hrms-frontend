@@ -42,13 +42,10 @@ export default function EmployerUpdate() {
     password: Yup.string(),
   });
 
-  const onSubmit = (values, { resetForm }) => {
+  const onSubmit = (values) => {
     console.log(values);
     employerService.update(values);
     handleModal(true);
-    setTimeout(() => {
-      resetForm();
-    }, 100);
   };
 
   const formik = useFormik({
@@ -143,7 +140,7 @@ export default function EmployerUpdate() {
           </Grid.Row>
         </Grid>
 
-        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Updated !" />
+        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Waiting for update confirmation !" />
       </Container>
     </div>
   );

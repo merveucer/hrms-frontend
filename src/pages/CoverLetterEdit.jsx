@@ -71,7 +71,7 @@ export default function CoverLetterEdit() {
             <Grid.Column width="3" />
             <Grid.Column width="10">
               {coverLetters.length === 0
-              ? <Segment textAlign="center" ><Header color="pink" content="No cover letter has been added to the resume yet." /></Segment>
+              ? <Segment raised textAlign="center" ><Header color="pink" content="No cover letter has been added to the resume yet." /></Segment>
               : <span>
                 <DateLabel value={new Date().toDateString()} />
                 <br /><br /><br />

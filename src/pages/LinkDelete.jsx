@@ -51,7 +51,7 @@ export default function LinkDelete() {
                   {resume.id == id ? (
                     <span key={resume.id}>
                       {resume.links.length === 0
-                      ? <Segment textAlign="center" ><Header color="pink" content="No link has been added to the resume yet." /></Segment>
+                      ? <Segment raised textAlign="center" ><Header color="pink" content="No link has been added to the resume yet." /></Segment>
                       : <span>
                         <DateLabel value={new Date().toDateString()} />
                         <br /><br /><br />

@@ -38,11 +38,11 @@ export default function EmployerDetail() {
               <Grid.Row>
                 <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
                 <br /><br /><br />
-                <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/employers/employer/update/${id}`}  />
+                <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/employers/employer/${id}/update`}  />
 
                 {updatedEmployers.map((updatedEmployer) => (
                   updatedEmployer.employer.id == id 
-                  ? <Button circular compact basic disabled color="black" floated="right" content="Waiting for update confirmation." />
+                  ? <Button circular compact basic disabled color="black" floated="right" content="Waiting for Update Confirmation" />
                   : null
                 ))}                                
               </Grid.Row>

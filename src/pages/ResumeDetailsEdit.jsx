@@ -29,43 +29,43 @@ export default function ResumeDetailsEdit() {
                 content="Link"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/link/add/${resume.id}`}
-                secondTo={`/link/delete/${resume.id}`}
+                firstTo={`/resumeDetails/resume/${resume.id}/link/add`}
+                secondTo={`/resumeDetails/resume/${resume.id}/link/delete`}
               />
               <ButtonsOfResumeDetailsEdit
                 content="Cover Letter"
                 firstIcon="add"
                 secondIcon="pencil alternate"
-                firstTo={`/coverLetter/add/${resume.candidate?.id}`}
-                secondTo={`/coverLetter/edit/${resume.candidate?.id}`}
+                firstTo={`/resumeDetails/resume/candidate/${resume.candidate?.id}/coverLetter/add`}
+                secondTo={`/resumeDetails/resume/candidate/${resume.candidate?.id}/coverLetter/edit`}
               />
               <ButtonsOfResumeDetailsEdit
                 content="Education"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/education/add/${resume.id}`}
-                secondTo={`/education/delete/${resume.id}`}
+                firstTo={`/resumeDetails/resume/${resume.id}/education/add`}
+                secondTo={`/resumeDetails/resume/${resume.id}/education/delete`}
               />
               <ButtonsOfResumeDetailsEdit
                 content="Experience"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/experience/add/${resume.id}`}
-                secondTo={`/experience/delete/${resume.id}`}
+                firstTo={`/resumeDetails/resume/${resume.id}/experience/add`}
+                secondTo={`/resumeDetails/resume/${resume.id}/experience/delete`}
               />
               <ButtonsOfResumeDetailsEdit
                 content="Language"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/languageLevel/add/${resume.id}`}
-                secondTo={`/languageLevel/delete/${resume.id}`}
+                firstTo={`/resumeDetails/resume/${resume.id}/languageLevel/add`}
+                secondTo={`/resumeDetails/resume/${resume.id}/languageLevel/delete`}
               />
               <ButtonsOfResumeDetailsEdit
                 content="Skill"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/skill/add/${resume.id}`}
-                secondTo={`/skill/delete/${resume.id}`}
+                firstTo={`/resumeDetails/resume/${resume.id}/skill/add`}
+                secondTo={`/resumeDetails/resume/${resume.id}/skill/delete`}
               />
             </Grid.Column>
             <Grid.Column width="5" />

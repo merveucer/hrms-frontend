@@ -6,7 +6,7 @@ export default function HighlightedContent() {
     <Grid>
       <Grid.Row stretched columns="2">
         <Grid.Column>
-          <Image src="https://res.cloudinary.com/merveucer/image/upload/v1629119569/resumes_qjfqgp.svg" />
+          <Image src="https://res.cloudinary.com/merveucer/image/upload/v1631524668/resumes_xrhxpv.svg" />
         </Grid.Column>
         <Grid.Column>
           <Divider hidden />
