@@ -9,21 +9,25 @@ export default class JobPostingService {
     getById(id) {
         return axios.get(`http://localhost:8080/api/jobPostings/getById?id=${id}`);
     }
-
-    getAllActiveOnesSortedByPostingDate() {
-        return axios.get("http://localhost:8080/api/jobPostings/getAllActiveOnesSortedByPostingDate");
+    
+    makeActiveOrPassive(id, isActive) {
+        return axios.put(`http://localhost:8080/api/jobPostings/makeActiveOrPassive?id=${id}&isActive=${isActive}`)
     }
 
     getAllActiveOnesSortedByPostingDateTop6() {
         return axios.get("http://localhost:8080/api/jobPostings/getAllActiveOnesSortedByPostingDateTop6");
     }
 
-    getAllActiveOnesByEmployerId(employerId) {
-        return axios.get(`http://localhost:8080/api/jobPostings/getAllActiveOnesByEmployerId?employerId=${employerId}`);
+    getAllActiveOnesByEmployerIdSortedByPostingDate(employerId) {
+        return axios.get(`http://localhost:8080/api/jobPostings/getAllActiveOnesByEmployerIdSortedByPostingDate?employerId=${employerId}`);
     }
 
-    makeActiveOrPassive(id, isActive) {
-        return axios.put(`http://localhost:8080/api/jobPostings/makeActiveOrPassive?id=${id}&isActive=${isActive}`)
+    getAllActiveOnesFilteredByCityAndJobTitleAndWorkingTimeAndWorkingType(cityId, jobTitleId, workingTimeId, workingTypeId) {
+        return axios.get(`http://localhost:8080/api/jobPostings/getAllActiveOnesFilteredByCityAndJobTitleAndWorkingTimeAndWorkingType?cityId=${cityId}&jobTitleId=${jobTitleId}&workingTimeId=${workingTimeId}&workingTypeId=${workingTypeId}`);
     }
+
+    getAllActiveOnesByPageFilteredByCityAndJobTitleAndWorkingTimeAndWorkingType(cityId, jobTitleId, workingTimeId, workingTypeId, pageNo, pageSize) {
+        return axios.get(`http://localhost:8080/api/jobPostings/getAllActiveOnesByPageFilteredByCityAndJobTitleAndWorkingTimeAndWorkingType?cityId=${cityId}&jobTitleId=${jobTitleId}&pageNo=${pageNo}&pageSize=${pageSize}&workingTimeId=${workingTimeId}&workingTypeId=${workingTypeId}`);
+    }    
 
 }
