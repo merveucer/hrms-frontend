@@ -28,6 +28,25 @@ import LanguageLevelDelete from './../pages/LanguageLevelDelete';
 import SkillDelete from './../pages/SkillDelete';
 import EmployerUpdate from './../pages/EmployerUpdate';
 import FavoriteJobPostingLayout from './FavotireJobPostingLayout';
+import AdminLayout from "./adminLayouts/AdminLayout";
+import CompanyStaffAdd from "./../pages/adminPages/CompanyStaffAdd";
+import CompanyStaffUpdate from "./../pages/adminPages/CompanyStaffUpdate";
+import AppDetailsEdit from "./../pages/adminPages/AppDetailsEdit";
+import CityAdd from "./../pages/adminPages/CityAdd";
+import CityUpdate from "./../pages/adminPages/CityUpdate";
+import JobTitleAdd from "./../pages/adminPages/JobTitleAdd";
+import JobTitleUpdate from "./../pages/adminPages/JobTitleUpdate";
+import LanguageAdd from "./../pages/adminPages/LanguageAdd";
+import LanguageUpdate from "./../pages/adminPages/LanguageUpdate";
+import LevelAdd from "./../pages/adminPages/LevelAdd";
+import LevelUpdate from "./../pages/adminPages/LevelUpdate";
+import LinkNameAdd from "./../pages/adminPages/LinkNameAdd";
+import LinkNameUpdate from "./../pages/adminPages/LinkNameUpdate";
+import WorkingTimeAdd from "./../pages/adminPages/WorkingTimeAdd";
+import WorkingTimeUpdate from "./../pages/adminPages/WorkingTimeUpdate";
+import WorkingTypeAdd from "./../pages/adminPages/WorkingTypeAdd";
+import WorkingTypeUpdate from "./../pages/adminPages/WorkingTypeUpdate";
+import Confirm from "./../pages/adminPages/Confirm";
 import { Container } from "semantic-ui-react";
 
 export default function Dashboard() {
@@ -62,6 +81,26 @@ export default function Dashboard() {
       <Route exact path="/resumeDetails/resume/:id/languageLevel/delete" component={LanguageLevelDelete} />
       <Route exact path="/resumeDetails/resume/:id/skill/add" component={SkillAdd} />
       <Route exact path="/resumeDetails/resume/:id/skill/delete" component={SkillDelete} />
+
+      <Route exact path="/adminPanel" component={AdminLayout} />
+      <Route exact path="/adminPanel/companyStaff/add" component={CompanyStaffAdd} />
+      <Route exact path="/adminPanel/companyStaff/update" component={CompanyStaffUpdate} />
+      <Route exact path="/adminPanel/edit" component={AppDetailsEdit} />
+      <Route exact path="/adminPanel/edit/city/add" component={CityAdd} />
+      <Route exact path="/adminPanel/edit/city/update" component={CityUpdate} />
+      <Route exact path="/adminPanel/edit/jobTitle/add" component={JobTitleAdd} />
+      <Route exact path="/adminPanel/edit/jobTitle/update" component={JobTitleUpdate} />
+      <Route exact path="/adminPanel/edit/language/add" component={LanguageAdd} />
+      <Route exact path="/adminPanel/edit/language/update" component={LanguageUpdate} />
+      <Route exact path="/adminPanel/edit/level/add" component={LevelAdd} />
+      <Route exact path="/adminPanel/edit/level/update" component={LevelUpdate} />
+      <Route exact path="/adminPanel/edit/linkName/add" component={LinkNameAdd} />
+      <Route exact path="/adminPanel/edit/linkName/update" component={LinkNameUpdate} />
+      <Route exact path="/adminPanel/edit/workingTime/add" component={WorkingTimeAdd} />
+      <Route exact path="/adminPanel/edit/workingTime/update" component={WorkingTimeUpdate} />
+      <Route exact path="/adminPanel/edit/workingType/add" component={WorkingTypeAdd} />
+      <Route exact path="/adminPanel/edit/workingType/update" component={WorkingTypeUpdate} />
+      <Route exact path="/adminPanel/confirm" component={Confirm} />
 
       <Footer />
     </Container>

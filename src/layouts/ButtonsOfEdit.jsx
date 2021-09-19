@@ -1,13 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Grid, Header, Button } from 'semantic-ui-react';
+import { Grid, Button } from 'semantic-ui-react';
 
-export default function ButtonsOfResumeDetailsEdit({content, firstIcon, secondIcon, firstTo, secondTo}) {
+export default function ButtonsOfEdit({ content, firstIcon, secondIcon, firstTo, secondTo }) {
   return (
     <Grid>
       <Grid.Row>
         <Grid.Column width="12">
-          <Header content={content} className="orbitron" />
+          <Button
+            circular
+            compact
+            basic
+            disabled
+            fluid
+            color="black"
+            content={content}
+          />
         </Grid.Column>
         <Grid.Column width="4">
           <Button
