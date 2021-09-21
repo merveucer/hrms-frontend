@@ -17,7 +17,7 @@ export default function WorkingTypeAdd() {
   };
 
   const validationSchema = Yup.object({
-    type: Yup.string().required(),
+    type: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -62,7 +62,7 @@ export default function WorkingTypeAdd() {
                     onChange={(event, data) => handleChange("type", data.value)}
                     value={formik.values.type}
                   />
-                  {formik.errors.type && formik.touched.type && <Label basic pointing color="pink" content={formik.errors.type} />}
+                  {formik.errors.type && formik.touched.type && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.type} /><br /></span>}
                   <br />
                   
                   <Button circular fluid type="submit" color="yellow" content="Add" />

@@ -29,8 +29,8 @@ export default function LinkNameUpdate() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().required(),
-    name: Yup.string().required(),
+    id: Yup.number().required("Required Field"),
+    name: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values) => {
@@ -73,14 +73,14 @@ export default function LinkNameUpdate() {
                     onChange={(event, data) => handleChange("id", data.value)}
                     value={formik.values.id}
                   />
-                  {formik.errors.id && formik.touched.id && <Label basic pointing color="pink" content={formik.errors.id} />}
+                  {formik.errors.id && formik.touched.id && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.id} /><br /><br /></span>}
                   <Form.Input
                     name="name"
                     label="Link Name"
                     onChange={(event, data) => handleChange("name", data.value)}
                     value={formik.values.name}
                   />
-                  {formik.errors.name && formik.touched.name && <Label basic pointing color="pink" content={formik.errors.name} />}
+                  {formik.errors.name && formik.touched.name && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.name} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Update" />

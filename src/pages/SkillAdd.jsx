@@ -23,8 +23,7 @@ export default function SkillAdd() {
   };
 
   const validationSchema = Yup.object({
-    resume: Yup.object().required(),
-    skill: Yup.string().required(),
+    skill: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -68,14 +67,11 @@ export default function SkillAdd() {
                     name="skill"
                     label="Skill"
                     onChange={(event, data) => handleChange("skill", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.skill}
                   />
-                  {formik.errors.skill && formik.touched.skill
-                  ? (<Label basic pointing color="pink" content={formik.errors.skill} />)
-                  : null}
-
+                  {formik.errors.skill && formik.touched.skill && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.skill} /><br /></span>}
                   <br />
+
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>

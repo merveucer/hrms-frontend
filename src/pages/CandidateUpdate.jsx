@@ -2,42 +2,46 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
-import Headline from "./../../layouts/Headline";
-import CompanyStaffService from "./../../services/companyStaffService";
-import DateLabel from "./../../layouts/DateLabel";
-import MessageModal from "./../../layouts/MessageModal";
+import Headline from "./../layouts/Headline";
+import CandidateService from "../services/candidateService";
+import DateLabel from "./../layouts/DateLabel";
+import MessageModal from "./../layouts/MessageModal";
 import { Container, Grid, Label, Form, Button } from "semantic-ui-react";
 
-export default function CompanyStaffUpdate() {
+export default function CandidateUpdate() {
   let { id } = useParams();
 
-  const [companyStaff, setCompanyStaff] = useState({});
+  const [candidate, setCandidate] = useState({});
   const [open, setOpen] = useState(false);
 
-  let companyStaffService = new CompanyStaffService();
+  let candidateService = new CandidateService();
 
   useEffect(() => {
-    companyStaffService.getById(id).then((result) => setCompanyStaff(result.data.data)); 
+    candidateService.getById(id).then((result) => setCandidate(result.data.data));
   }, []);
 
   const initialValues = {
     id: id,
-    firstName: companyStaff.firstName,
-    lastName: companyStaff.lastName,
-    email: companyStaff.email,
-    password: companyStaff.password,
+    firstName: candidate.firstName,
+    lastName: candidate.lastName,
+    identityNumber: candidate.identityNumber,
+    dateOfBirth: candidate.dateOfBirth,
+    email: candidate.email,
+    password: candidate.password,
   };
 
   const validationSchema = Yup.object({
     firstName: Yup.string(),
     lastName: Yup.string(),
+    identityNumber: Yup.string().length(11 ,"Not 11 Characters in Length"),
+    dateOfBirth: Yup.date(),
     email: Yup.string().email("Not a Valid Email"),
-    password: Yup.string(),   
+    password: Yup.string(),
   });
 
   const onSubmit = (values) => {
     console.log(values);
-    companyStaffService.update(values);
+    candidateService.update(values);
     handleModal(true);
   };
 
@@ -56,9 +60,9 @@ export default function CompanyStaffUpdate() {
   };
 
   return (
-    <div>
+      <div>
       <Container className="content">
-        <Headline content="Update Company Staff" />
+        <Headline content="Update Candidate" />
 
         <Grid>
           <Grid.Row>
@@ -72,7 +76,7 @@ export default function CompanyStaffUpdate() {
                     name="firstName"
                     label="First Name"
                     focus
-                    placeholder={companyStaff.firstName}
+                    placeholder={candidate.firstName}
                     onChange={(event, data) => handleChange("firstName", data.value)}
                     value={formik.values.firstName}
                   />
@@ -81,16 +85,44 @@ export default function CompanyStaffUpdate() {
                     name="lastName"
                     label="Last Name"
                     focus
-                    placeholder={companyStaff.lastName}
+                    placeholder={candidate.lastName}
                     onChange={(event, data) => handleChange("lastName", data.value)}
                     value={formik.values.lastName}
                   />
-                  {formik.errors.firstName && formik.touched.firstName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.firstName} /><br /><br /></span>}
+                  {formik.errors.lastName && formik.touched.lastName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.lastName} /><br /><br /></span>}
+                  <Form.Group widths="equal">
+                    <Form.Input
+                      name="identityNumber"
+                      label="Identity Number"
+                      focus
+                      placeholder={candidate.identityNumber}
+                      onChange={(event, data) => handleChange("identityNumber", data.value)}
+                      value={formik.values.identityNumber}
+                    />
+                    <Form.Input
+                      name="dateOfBirth"
+                      label="Date of Birth"
+                      focus
+                      placeholder={candidate.dateOfBirth}
+                      onChange={(event, data) => handleChange("dateOfBirth", data.value)}
+                      value={formik.values.dateOfBirth}
+                    />
+                  </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="2">
+                      <Grid.Column>
+                        {formik.errors.identityNumber && formik.touched.identityNumber && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.identityNumber} /><br /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.dateOfBirth && formik.touched.dateOfBirth && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.dateOfBirth} /><br /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <Form.Input
                     name="email"
-                    label="Email"
+                    label="E-mail"
                     focus
-                    placeholder={companyStaff.email}
+                    placeholder={candidate.email}
                     onChange={(event, data) => handleChange("email", data.value)}
                     value={formik.values.email}
                   />
@@ -103,7 +135,7 @@ export default function CompanyStaffUpdate() {
                     onChange={(event, data) => handleChange("password", data.value)}
                     value={formik.values.password}
                   />
-                  {formik.errors.password && formik.touched.password && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.password} /><br /></span>}
+                  {formik.errors.password && formik.touched.password && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.password} /><br /><br /></span>}
                   <br />
                   
                   <Button circular fluid type="submit" color="yellow" content="Update" disabled={!formik.dirty} />
@@ -115,7 +147,7 @@ export default function CompanyStaffUpdate() {
         </Grid>
 
         <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Updated !" />
-      </Container>      
+      </Container>
     </div>
-  );
+  )
 }

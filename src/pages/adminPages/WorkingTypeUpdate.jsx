@@ -29,8 +29,8 @@ export default function WorkingTypeUpdate() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().required(),
-    type: Yup.string().required(),
+    id: Yup.number().required("Required Field"),
+    type: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values) => {
@@ -73,14 +73,14 @@ export default function WorkingTypeUpdate() {
                     onChange={(event, data) => handleChange("id", data.value)}
                     value={formik.values.id}
                   />
-                  {formik.errors.id && formik.touched.id && <Label basic pointing color="pink" content={formik.errors.id} />}
+                  {formik.errors.id && formik.touched.id && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.id} /><br /><br /></span>}
                   <Form.Input
                     name="type"
                     label="Type"
                     onChange={(event, data) => handleChange("type", data.value)}
                     value={formik.values.type}
                   />
-                  {formik.errors.type && formik.touched.type && <Label basic pointing color="pink" content={formik.errors.type} />}
+                  {formik.errors.type && formik.touched.type && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.type} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Update" />

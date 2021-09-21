@@ -17,7 +17,7 @@ export default function LanguageAdd() {
   };
 
   const validationSchema = Yup.object({
-    language: Yup.string().required(),
+    language: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -62,7 +62,7 @@ export default function LanguageAdd() {
                     onChange={(event, data) => handleChange("language", data.value)}
                     value={formik.values.language}
                   />
-                  {formik.errors.language && formik.touched.language && <Label basic pointing color="pink" content={formik.errors.language} />}
+                  {formik.errors.language && formik.touched.language && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.language} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Add" />

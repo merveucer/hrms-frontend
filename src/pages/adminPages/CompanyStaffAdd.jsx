@@ -20,10 +20,10 @@ export default function CompanyStaffAdd() {
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required(),
-    email: Yup.string().required(),
-    password: Yup.string().required(),
+    firstName: Yup.string().required("Required Field"),
+    lastName: Yup.string().required("Required Field"),
+    email: Yup.string().email("Not a Valid Email").required("Required Field"),
+    password: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -68,14 +68,14 @@ export default function CompanyStaffAdd() {
                     onChange={(event, data) => handleChange("firstName", data.value)}
                     value={formik.values.firstName}
                   />
-                  {formik.errors.firstName && formik.touched.firstName && <Label basic pointing color="pink" content={formik.errors.firstName} />}
+                  {formik.errors.firstName && formik.touched.firstName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.firstName} /><br /><br /></span>}
                   <Form.Input
                     name="lastName"
                     label="Last Name"
                     onChange={(event, data) => handleChange("lastName", data.value)}
                     value={formik.values.lastName}
                   />
-                  {formik.errors.firstName && formik.touched.firstName && <Label basic pointing color="pink" content={formik.errors.firstName} />}
+                  {formik.errors.firstName && formik.touched.firstName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.firstName} /><br /><br /></span>}
                   <Form.Input
                     name="email"
                     label="Email"
@@ -83,14 +83,14 @@ export default function CompanyStaffAdd() {
                     onChange={(event, data) => handleChange("email", data.value)}
                     value={formik.values.email}
                   />
-                  {formik.errors.email && formik.touched.email && <Label basic pointing color="pink" content={formik.errors.email} />}
+                  {formik.errors.email && formik.touched.email && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.email} /><br /><br /></span>}
                   <Form.Input
                     name="password"
                     label="Password"
                     onChange={(event, data) => handleChange("password", data.value)}
                     value={formik.values.password}
                   />
-                  {formik.errors.password && formik.touched.password && <Label basic pointing color="pink" content={formik.errors.password} />}
+                  {formik.errors.password && formik.touched.password && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.password} /><br /></span>}
                   <br />
                   
                   <Button circular fluid type="submit" color="yellow" content="Sign up" />

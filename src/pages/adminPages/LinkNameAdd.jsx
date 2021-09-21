@@ -17,7 +17,7 @@ export default function LinkNameAdd() {
   };
 
   const validationSchema = Yup.object({
-    name: Yup.string().required(),
+    name: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -62,7 +62,7 @@ export default function LinkNameAdd() {
                     onChange={(event, data) => handleChange("name", data.value)}
                     value={formik.values.name}
                   />
-                  {formik.errors.name && formik.touched.name && <Label basic pointing color="pink" content={formik.errors.name} />}
+                  {formik.errors.name && formik.touched.name && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.name} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Add" />

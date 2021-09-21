@@ -29,8 +29,8 @@ export default function LevelUpdate() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().required(),
-    level: Yup.string().required(),
+    id: Yup.number().required("Required Field"),
+    level: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values) => {
@@ -73,14 +73,14 @@ export default function LevelUpdate() {
                     onChange={(event, data) => handleChange("id", data.value)}
                     value={formik.values.id}
                   />
-                  {formik.errors.id && formik.touched.id && <Label basic pointing color="pink" content={formik.errors.id} />}
+                  {formik.errors.id && formik.touched.id && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.id} /><br /><br /></span>}
                   <Form.Input
                     name="level"
                     label="Level"
                     onChange={(event, data) => handleChange("level", data.value)}
                     value={formik.values.level}
                   />
-                  {formik.errors.level && formik.touched.level && <Label basic pointing color="pink" content={formik.errors.level} />}
+                  {formik.errors.level && formik.touched.level && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.level} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Update" />

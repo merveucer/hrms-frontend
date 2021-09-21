@@ -27,11 +27,10 @@ export default function EducationAdd() {
   };
 
   const validationSchema = Yup.object({
-    resume: Yup.object().required(),
-    nameOfEducationalInstitution: Yup.string().required(),
-    department: Yup.string().required(),
-    degree: Yup.string().required(),
-    startingDate: Yup.date().required(),
+    nameOfEducationalInstitution: Yup.string().required("Required Field"),
+    department: Yup.string().required("Required Field"),
+    degree: Yup.string().required("Required Field"),
+    startingDate: Yup.date().required("Required Field"),
     graduationDate: Yup.date(),
   });
 
@@ -76,58 +75,51 @@ export default function EducationAdd() {
                     name="nameOfEducationalInstitution"
                     label="Name of Educational Institution"
                     onChange={(event, data) => handleChange("nameOfEducationalInstitution", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.nameOfEducationalInstitution}
                   />
-                  {formik.errors.nameOfEducationalInstitution && formik.touched.nameOfEducationalInstitution
-                  ? (<Label basic pointing color="pink" content={formik.errors.nameOfEducationalInstitution} />)
-                  : null}
+                  {formik.errors.nameOfEducationalInstitution && formik.touched.nameOfEducationalInstitution && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.nameOfEducationalInstitution} /><br /><br /></span>}
                   <Form.Input
                     name="department"
                     label="Department"
                     onChange={(event, data) => handleChange("department", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.department}
                   />
-                  {formik.errors.department && formik.touched.department
-                  ? (<Label basic pointing color="pink" content={formik.errors.department} />)
-                  : null}
+                  {formik.errors.department && formik.touched.department && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.department} /><br /><br /></span>}
                   <Form.Input
                     name="degree"
                     label="Degree"
                     onChange={(event, data) => handleChange("degree", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.degree}
                   />
-                  {formik.errors.degree && formik.touched.degree
-                  ? (<Label basic pointing color="pink" content={formik.errors.degree} />)
-                  : null}
+                  {formik.errors.degree && formik.touched.degree && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.degree} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Input
                       name="startingDate"
                       label="Starting Date"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("startingDate", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.startingDate}
-                    />
-                    {formik.errors.startingDate && formik.touched.startingDate
-                    ? (<Label basic pointing color="pink" content={formik.errors.startingDate} />)
-                    : null}
+                    />                    
                     <Form.Input
                       name="graduationDate"
                       label="Graduation Date (Optional)"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("graduationDate", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.graduationDate}
-                    />
-                    {formik.errors.graduationDate && formik.touched.graduationDate
-                    ? (<Label basic pointing color="pink" content={formik.errors.graduationDate} />)
-                    : null}
-                    </Form.Group>                    
-
+                    />                  
+                  </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.startingDate && formik.touched.startingDate && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.startingDate} /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.graduationDate && formik.touched.graduationDate && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.graduationDate} /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <br />
+
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>

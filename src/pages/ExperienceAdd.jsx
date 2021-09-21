@@ -39,11 +39,10 @@ export default function ExperienceAdd() {
   };
 
   const validationSchema = Yup.object({
-    resume: Yup.object().required(),
-    companyName: Yup.string().required(),
-    jobTitle: Yup.object().required(),
-    startingDate: Yup.date().required(),
-    terminationDate: Yup.date(),
+    companyName: Yup.string().required("Required Field"),
+    jobTitle: Yup.object().required("Required Field"),
+    startingDate: Yup.date().required("Required Field"),
+    terminationDate: Yup.date("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -87,49 +86,45 @@ export default function ExperienceAdd() {
                     name="companyName"
                     label="Company Name"
                     onChange={(event, data) => handleChange("companyName", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.companyName}
                   />
-                  {formik.errors.companyName && formik.touched.companyName
-                  ? (<Label basic pointing color="pink" content={formik.errors.companyName} />)
-                  : null}
+                  {formik.errors.companyName && formik.touched.companyName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.companyName} /><br /><br /></span>}
                   <Form.Select
                     name="jobTitle"
                     label="Job Title"
                     options={jobTitleOptions}
                     onChange={(event, data) => handleChange("jobTitle", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.jobTitle}
                   />
-                  {formik.errors.jobTitle && formik.touched.jobTitle
-                  ? (<Label basic pointing color="pink" content={formik.errors.jobTitle} />)
-                  : null}
+                  {formik.errors.jobTitle && formik.touched.jobTitle && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.jobTitle} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Input
                       name="startingDate"
                       label="Starting Date"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("startingDate", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.startingDate}
                     />
-                    {formik.errors.startingDate && formik.touched.startingDate
-                    ? (<Label basic pointing color="pink" content={formik.errors.startingDate} />)
-                    : null}
                     <Form.Input
                       name="terminationDate"
                       label="Termination Date (Optional)"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("terminationDate", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.terminationDate}
                     />
-                    {formik.errors.terminationDate && formik.touched.terminationDate
-                    ? (<Label basic pointing color="pink" content={formik.errors.terminationDate} />)
-                    : null}
-                  </Form.Group>                  
-
+                  </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="2">
+                      <Grid.Column>
+                        {formik.errors.startingDate && formik.touched.startingDate && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.startingDate} /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.terminationDate && formik.touched.terminationDate && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.terminationDate} /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <br />
+
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>

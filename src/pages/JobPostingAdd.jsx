@@ -29,7 +29,7 @@ export default function JobPostingAdd() {
   let workingTypeService = new WorkingTypeService();
 
   useEffect(() => {
-    employerService.getAllByIsActivatedAndIsConfirmed(true, true).then((result) => setEmployers(result.data.data));
+    employerService.getAllByIsConfirmedAndUserConfirmationTypeIdSortedByCompanyName(true, 1).then((result) => setEmployers(result.data.data));
     jobTitleService.getAll().then((result) => setJobTitles(result.data.data));
     cityService.getAll().then((result) => setCities(result.data.data));
     workingTimeService.getAll().then((result) => setWorkingTimes(result.data.data));
@@ -80,16 +80,16 @@ export default function JobPostingAdd() {
   };
 
   const validationSchema = Yup.object({
-    employer: Yup.object().required(),
-    jobTitle: Yup.object().required(),
-    city: Yup.object().required(),
-    workingTime: Yup.object().required(),
-    workingType: Yup.object().required(),
-    jobDescription: Yup.string().max("2300").required(),
-    numberOfOpenPositions: Yup.number().required(),
+    employer: Yup.object().required("Required Field"),
+    jobTitle: Yup.object().required("Required Field"),
+    city: Yup.object().required("Required Field"),
+    workingTime: Yup.object().required("Required Field"),
+    workingType: Yup.object().required("Required Field"),
+    jobDescription: Yup.string().max(2300, "Over 1150 Characters").required("Required Field"),
+    numberOfOpenPositions: Yup.number().positive("Not a Positive Number").required("Required Field"),
     salaryMin: Yup.string(),
     salaryMax: Yup.string(),
-    closingDate: Yup.date().required(),
+    closingDate: Yup.date().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -118,7 +118,7 @@ export default function JobPostingAdd() {
   return (
     <div>
       <Container className="content">
-        <Headline content="Add Job Posting" />
+        <Headline content="Post a Job" />
 
         <Grid>
           <Grid.Row>
@@ -133,123 +133,125 @@ export default function JobPostingAdd() {
                     label="Employer"
                     placeholder=""
                     options={employerOptions}
-                    onChange={(event, data) => handleChange("employer", data.value)}
-                    onBlur={formik.onBlur}
+                    onChange={(event, data) => handleChange("employer", data.value)}             
                     value={formik.values.employer}
                   />
-                  {formik.errors.employer && formik.touched.employer
-                  ? (<Label basic pointing color="pink" content={formik.errors.employer} />)
-                  : null}
+                  {formik.errors.employer && formik.touched.employer && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.employer} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Select
                       name="jobTitle"
                       label="Job Title"
                       options={jobTitleOptions}
                       onChange={(event, data) => handleChange("jobTitle", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.jobTitle}
                     />
-                    {formik.errors.jobTitle && formik.touched.jobTitle
-                    ? (<Label basic pointing color="pink" content={formik.errors.jobTitle} />)
-                    : null}
                     <Form.Select
                       name="city"
                       label="City"
                       options={cityOptions}
                       onChange={(event, data) =>handleChange("city", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.city}
                     />
-                    {formik.errors.city && formik.touched.city
-                    ? (<Label basic pointing color="pink" content={formik.errors.city} />)
-                    : null}
                   </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.jobTitle && formik.touched.jobTitle && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.jobTitle} /><br /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.city && formik.touched.city && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.city} /><br /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <Form.Group widths="equal">
                     <Form.Select
                       name="workingTime"
                       label="Working Time"
                       options={workingTimeOptions}
                       onChange={(event, data) => handleChange("workingTime", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.workingTime}
                     />
-                    {formik.errors.workingTime && formik.touched.workingTime
-                    ? (<Label basic pointing color="pink" content={formik.errors.workingTime} />)
-                    : null}
                     <Form.Select
                       name="workingType"
                       label="Working Type"
                       options={workingTypeOptions}
                       onChange={(event, data) => handleChange("workingType", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.workingType}
                     />
-                    {formik.errors.workingType && formik.touched.workingType
-                    ? (<Label basic pointing color="pink" content={formik.errors.workingType} />)
-                    : null}
                   </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.workingTime && formik.touched.workingTime && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.workingTime} /><br /><br /></span>}  
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.workingType && formik.touched.workingType && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.workingType} /><br /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <Form.TextArea
                     name="jobDescription"
                     label="Job Description"
                     placeholder=". . ."
                     onChange={(event, data) => handleChange("jobDescription", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.jobDescription}
                   />
-                  {formik.errors.jobDescription && formik.touched.jobDescription
-                  ? (<Label basic pointing color="pink" content={formik.errors.jobDescription} />)
-                  : null}
+                  {formik.errors.jobDescription && formik.touched.jobDescription && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.jobDescription} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Input
                       name="numberOfOpenPositions"
                       label="Number of Open Positions"
                       placeholder="1"
                       onChange={(event, data) => handleChange("numberOfOpenPositions", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.numberOfOpenPositions}
                     />
-                    {formik.errors.numberOfOpenPositions && formik.touched.numberOfOpenPositions
-                    ? (<Label basic pointing color="pink" content={formik.errors.numberOfOpenPositions} />)
-                    : null}
                     <Form.Input
                       name="closingDate"
                       label="Closing Date"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("closingDate", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.closingDate}
                     />
-                    {formik.errors.closingDate && formik.touched.closingDate
-                    ? (<Label basic pointing color="pink" content={formik.errors.closingDate} />)
-                    : null}
                   </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.numberOfOpenPositions && formik.touched.numberOfOpenPositions && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.numberOfOpenPositions} /><br /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.closingDate && formik.touched.closingDate && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.closingDate} /><br /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <Form.Group widths="equal">
                     <Form.Input
                       name="salaryMin"
                       label="Salary Min (Optional)"
                       placeholder="5000 ₺"
                       onChange={(event, data) => handleChange("salaryMin", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.salaryMin}
                     />
-                    {formik.errors.salaryMin && formik.touched.salaryMin
-                    ? (<Label basic pointing color="pink" content={formik.errors.salaryMin} />)
-                    : null}
                     <Form.Input
                       name="salaryMax"
                       label="Salary Max (Optional)"
                       placeholder="10000 ₺"
                       onChange={(event, data) => handleChange("salaryMax", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.salaryMax}
                     />
-                    {formik.errors.salaryMax && formik.touched.salaryMax
-                    ? (<Label basic pointing color="pink" content={formik.errors.salaryMax} />)
-                    : null}
                   </Form.Group>
-
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.salaryMin && formik.touched.salaryMin && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.salaryMin} /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.salaryMax && formik.touched.salaryMax && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.salaryMax} /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <br />
-                  <Button circular fluid type="submit" color="yellow" content="Add" />
+
+                  <Button circular fluid type="submit" color="yellow" content="Post" />
                 </Form>
               </Formik>
             </Grid.Column>
@@ -257,7 +259,7 @@ export default function JobPostingAdd() {
           </Grid.Row>
         </Grid>
 
-        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Added and awaiting confirmation !" />
+        <MessageModal onClose={() => handleModal(false)} onOpen={() => handleModal(true)} open={open} content="Waiting for posting confirmation !" />
       </Container>
     </div>
   );

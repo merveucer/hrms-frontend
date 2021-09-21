@@ -47,9 +47,8 @@ export default function LanguageLevelAdd() {
   };
 
   const validationSchema = Yup.object({
-    resume: Yup.object().required(),
-    language: Yup.object().required(),
-    level: Yup.object().required(),
+    language: Yup.object().required("Required Field"),
+    level: Yup.object().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -94,25 +93,19 @@ export default function LanguageLevelAdd() {
                     label="Language"
                     options={languageOptions}
                     onChange={(event, data) => handleChange("language", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.language}
                   />
-                  {formik.errors.language && formik.touched.language
-                  ? (<Label basic pointing color="pink" content={formik.errors.language} />)
-                  : null}
+                  {formik.errors.language && formik.touched.language && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.language} /><br /><br /></span>}
                   <Form.Select
                     name="level"
                     label="Level"
                     options={levelOptions}
                     onChange={(event, data) => handleChange("level", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.level}
                   />
-                  {formik.errors.language && formik.touched.language
-                  ? (<Label basic pointing color="pink" content={formik.errors.language} />)
-                  : null}
-
+                  {formik.errors.language && formik.touched.language && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.language} /><br /></span>}
                   <br />
+                  
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>

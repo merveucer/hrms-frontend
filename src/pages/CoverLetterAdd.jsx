@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useParams } from "react-router";
+import { Router, useParams } from "react-router";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import Headline from "../layouts/Headline";
@@ -22,9 +22,8 @@ export default function CoverLetterAdd() {
   };
 
   const validationSchema = Yup.object({
-    candidate: Yup.object().required(),
-    name: Yup.string().required(),
-    content: Yup.string().max("1150").required(),
+    name: Yup.string().required("Required Field"),
+    content: Yup.string().max(1150, "Over 1150 Characters").required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -67,25 +66,19 @@ export default function CoverLetterAdd() {
                     name="name"
                     label="Name"
                     onChange={(event, data) => handleChange("name", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.name}
                   />
-                  {formik.errors.name && formik.touched.name
-                  ? (<Label basic pointing color="pink" content={formik.errors.name} />)
-                  : null}
+                  {formik.errors.name && formik.touched.name && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.name} /><br /><br /></span>}
                   <Form.TextArea
                     name="content"
                     label="Content"
                     placeholder=". . ."
                     onChange={(event, data) => handleChange("content", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.content}
                   />
-                  {formik.errors.content && formik.touched.content
-                  ? (<Label basic pointing color="pink" content={formik.errors.content} />)
-                  : null}
-
+                  {formik.errors.content && formik.touched.content && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.content} /><br /></span>}
                   <br />
+
                   <Button circular fluid type="submit" color="yellow" content="Add" />
                 </Form>
               </Formik>

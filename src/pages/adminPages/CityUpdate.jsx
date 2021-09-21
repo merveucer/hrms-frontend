@@ -29,8 +29,8 @@ export default function CityUpdate() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().required(),
-    city: Yup.string().required(),
+    id: Yup.number().required("Required Field"),
+    city: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values) => {
@@ -73,14 +73,14 @@ export default function CityUpdate() {
                     onChange={(event, data) => handleChange("id", data.value)}
                     value={formik.values.id}
                   />
-                  {formik.errors.id && formik.touched.id && <Label basic pointing color="pink" content={formik.errors.id} />}
+                  {formik.errors.id && formik.touched.id && <span><Label basic pointing className="orbitron" color="pink" content={formik.errors.id} /><br/><br /></span>}
                   <Form.Input
                     name="city"
                     label="City"
                     onChange={(event, data) => handleChange("city", data.value)}
                     value={formik.values.city}
                   />
-                  {formik.errors.city && formik.touched.city && <Label basic pointing color="pink" content={formik.errors.city} />}
+                  {formik.errors.city && formik.touched.city && <span><Label basic pointing className="orbitron" color="pink" content={formik.errors.city} /><br/></span>}
                   <br />
                   
                   <Button circular fluid type="submit" color="yellow" content="Update" />

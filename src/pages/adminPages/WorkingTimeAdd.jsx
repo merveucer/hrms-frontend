@@ -17,7 +17,7 @@ export default function WorkingTimeAdd() {
   };
 
   const validationSchema = Yup.object({
-    time: Yup.string().required(),
+    time: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -62,7 +62,7 @@ export default function WorkingTimeAdd() {
                     onChange={(event, data) => handleChange("time", data.value)}
                     value={formik.values.time}
                   />
-                  {formik.errors.time && formik.touched.time && <Label basic pointing color="pink" content={formik.errors.time} />}
+                  {formik.errors.time && formik.touched.time && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.time} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Add" />

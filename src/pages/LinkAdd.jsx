@@ -37,9 +37,8 @@ export default function LinkAdd() {
   };
 
   const validationSchema = Yup.object({
-    resume: Yup.object().required(),
-    linkName: Yup.object().required(),
-    url: Yup.string().required(),
+    linkName: Yup.object().required("Required Field"),
+    url: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -84,24 +83,18 @@ export default function LinkAdd() {
                     label="Link Name"                     
                     options={linkNameOptions}
                     onChange={(event, data) => handleChange("linkName", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.linkName}
                   />
-                  {formik.errors.linkName && formik.touched.linkName
-                  ? (<Label basic pointing color="pink" content={formik.errors.linkName} />)
-                  : null}
+                  {formik.errors.linkName && formik.touched.linkName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.linkName} /><br /><br /></span>}
                   <Form.Input
                     name="url"
                     label="Url"
                     onChange={(event, data) => handleChange("url", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.url}
                   />
-                  {formik.errors.url && formik.touched.url
-                  ? (<Label basic pointing color="pink" content={formik.errors.url} />)
-                  : null}
-
+                  {formik.errors.url && formik.touched.url && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.url} /><br /></span>}
                   <br />
+                  
                   <Button circular fluid type="submit" color="yellow" content={"Add"} />
                 </Form>
               </Formik>

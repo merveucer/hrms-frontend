@@ -23,13 +23,13 @@ export default function CandidateAdd() {
   };
 
   const validationSchema = Yup.object({
-    firstName: Yup.string().required(),
-    lastName: Yup.string().required(),
-    identityNumber: Yup.string().required(),
-    dateOfBirth: Yup.date().required(),
-    email: Yup.string().required(),
-    password: Yup.string().required(),
-    confirmPassword: Yup.string().required(),
+    firstName: Yup.string().required("Required Field"),
+    lastName: Yup.string().required("Required Field"),
+    identityNumber: Yup.string().length(11 ,"Not 11 Characters in Length").required("Required Field"),
+    dateOfBirth: Yup.date().required("Required Field"),
+    email: Yup.string().email("Not a Valid Email").required("Required Field"),
+    password: Yup.string().required("Required Field"),
+    confirmPassword: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -72,79 +72,66 @@ export default function CandidateAdd() {
                     name="firstName"
                     label="First Name"
                     onChange={(event, data) => handleChange("firstName", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.firstName}
                   />
-                  {formik.errors.firstName && formik.touched.firstName 
-                  ? (<Label basic pointing color="pink" content={formik.errors.firstName} />)
-                  : null}
+                  {formik.errors.firstName && formik.touched.firstName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.firstName} /><br /><br /></span>}
                   <Form.Input
                     name="lastName"
                     label="Last Name"
                     onChange={(event, data) => handleChange("lastName", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.lastName}
                   />
-                  {formik.errors.lastName && formik.touched.lastName
-                  ? (<Label basic pointing color="pink" content={formik.errors.lastName} />)
-                  : null}
+                  {formik.errors.lastName && formik.touched.lastName && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.lastName} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Input
                       name="identityNumber"
                       label="Identity Number"
                       placeholder="XXXXXXXXXXX"
                       onChange={(event, data) => handleChange("identityNumber", data.value)}
-                      onBlur={formik.onBlur}
-                        value={formik.values.identityNumber}
+                      value={formik.values.identityNumber}
                     />
-                    {formik.errors.identityNumber && formik.touched.identityNumber
-                    ? (<Label basic pointing color="pink" content={formik.errors.identityNumber} />)
-                    : null}
                     <Form.Input
                       name="dateOfBirth"
                       label="Date of Birth"
                       placeholder="YYYY-MM-DD"
                       onChange={(event, data) => handleChange("dateOfBirth", data.value)}
-                      onBlur={formik.onBlur}
                       value={formik.values.dateOfBirth}
                     />
-                    {formik.errors.dateOfBirth && formik.touched.dateOfBirth
-                    ? (<Label basic pointing color="pink" content={formik.errors.dateOfBirth} />)
-                    : null}
                   </Form.Group>
+                  <Grid>
+                    <Grid.Row columns="equal">
+                      <Grid.Column>
+                        {formik.errors.identityNumber && formik.touched.identityNumber && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.identityNumber} /><br /><br /></span>}
+                      </Grid.Column>
+                      <Grid.Column>
+                        {formik.errors.dateOfBirth && formik.touched.dateOfBirth && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.dateOfBirth} /><br /><br /></span>}
+                      </Grid.Column>
+                    </Grid.Row>
+                  </Grid>
                   <Form.Input
                     name="email"
                     label="E-mail"
                     placeholder="example@example.com"
                     onChange={(event, data) => handleChange("email", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.email}
                   />
-                  {formik.errors.email && formik.touched.email
-                  ? (<Label basic pointing color="pink" content={formik.errors.email} />)
-                  : null}
+                  {formik.errors.email && formik.touched.email && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.email} /><br /><br /></span>}
                   <Form.Input
                     name="password"
                     label="Password"
                     onChange={(event, data) => handleChange("password", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.password}
                   />
-                  {formik.errors.password && formik.touched.password
-                  ? (<Label basic pointing color="pink" content={formik.errors.password} />)
-                  : null}
+                  {formik.errors.password && formik.touched.password && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.password} /><br /><br /></span>}
                   <Form.Input
                     name="confirmPassword"
                     label="Confirm Password"
                     onChange={(event, data) => handleChange("confirmPassword", data.value)}
-                    onBlur={formik.onBlur}
                     value={formik.values.confirmPassword}
                   />
-                  {formik.errors.confirmPassword && formik.touched.confirmPassword
-                  ? (<Label basic pointing color="pink" content={formik.errors.confirmPassword} />)
-                  : null}
-
+                  {formik.errors.confirmPassword && formik.touched.confirmPassword && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.confirmPassword} /><br /></span>}
                   <br />
+                  
                   <Button circular fluid type="submit" color="yellow" content="Sign up" />
                 </Form>
               </Formik>

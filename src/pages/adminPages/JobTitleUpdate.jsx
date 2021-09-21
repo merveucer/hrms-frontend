@@ -29,8 +29,8 @@ export default function JobTitleUpdate() {
   };
 
   const validationSchema = Yup.object({
-    id: Yup.number().required(),
-    title: Yup.string().required(),
+    id: Yup.number().required("Required Field"),
+    title: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values) => {
@@ -73,14 +73,14 @@ export default function JobTitleUpdate() {
                     onChange={(event, data) => handleChange("id", data.value)}
                     value={formik.values.id}
                   />
-                  {formik.errors.id && formik.touched.id && <Label basic pointing color="pink" content={formik.errors.id} />}
+                  {formik.errors.id && formik.touched.id && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.id} /><br /><br /></span>}
                   <Form.Input
                     name="title"
                     label="Job Title"
                     onChange={(event, data) => handleChange("title", data.value)}
                     value={formik.values.title}
                   />
-                  {formik.errors.title && formik.touched.title && <Label basic pointing color="pink" content={formik.errors.title} />}
+                  {formik.errors.title && formik.touched.title && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.title} /><br /></span>}
                   <br />
                   
                   <Button circular fluid type="submit" color="yellow" content="Update" />

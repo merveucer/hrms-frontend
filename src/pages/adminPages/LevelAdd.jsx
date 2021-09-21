@@ -17,7 +17,7 @@ export default function LevelAdd() {
   };
 
   const validationSchema = Yup.object({
-    level: Yup.string().required(),
+    level: Yup.string().required("Required Field"),
   });
 
   const onSubmit = (values, { resetForm }) => {
@@ -62,7 +62,7 @@ export default function LevelAdd() {
                     onChange={(event, data) => handleChange("level", data.value)}
                     value={formik.values.level}
                   />
-                  {formik.errors.level && formik.touched.level && <Label basic pointing color="pink" content={formik.errors.level} />}
+                  {formik.errors.level && formik.touched.level && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.level} /><br /></span>}
                   <br />
 
                   <Button circular fluid type="submit" color="yellow" content="Add" />
