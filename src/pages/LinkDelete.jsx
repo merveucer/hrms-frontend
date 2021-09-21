@@ -22,13 +22,10 @@ export default function LinkDelete() {
   useEffect(() => {
     resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
     resumeService.getById(id).then((result) => setResume(result.data.data));
-  }, []);
+  }, [resume]);
 
   const handleModal = (value) => {
     setOpen(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (linkId) => {    
@@ -48,31 +45,31 @@ export default function LinkDelete() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <span>
-                  {resume.id == id ? (
+                  {resume.id == id && (
                     <span key={resume.id}>
                       {resume.links.length === 0
-                      ? <Segment raised textAlign="center" ><Header color="pink" content="No link has been added to the resume yet." /></Segment>
-                      : <span>
-                        <DateLabel value={new Date().toDateString()} />
-                        <br /><br /><br />
+                        ? <Segment raised textAlign="center" ><Header color="pink" content="No link has been added to the resume yet." /></Segment>
+                        : <span>
+                            <DateLabel value={new Date().toDateString()} />
+                            <br /><br /><br />
 
-                        {(resume.links.map((link) =>
-                        (link.linkName?.id === 1 
-                        ? <Segment raised>
-                          <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(link.id)} />
-                          <br />
-                          <GithubButton url={link.url} />&nbsp;&nbsp;&nbsp;<strong>{link.url}</strong>
-                          <br /><br />
-                        </Segment>
-                        : <Segment raised>
-                          <Button circular compact icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(link.id)} />
-                          <br />
-                          <LinkedinButton url={link.url} />&nbsp;&nbsp;&nbsp;<strong>{link.url}</strong>
-                          <br /><br />
-                        </Segment>)))}
-                      </span>}
+                            {(resume.links.map((link) =>
+                              (link.linkName?.id === 1 
+                                ? <Segment raised>
+                                    <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(link.id)} />
+                                    <br />
+                                    <GithubButton url={link.url} />&nbsp;&nbsp;&nbsp;<strong>{link.url}</strong>
+                                    <br /><br />
+                                  </Segment>
+                                : <Segment raised>
+                                    <Button circular compact icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(link.id)} />
+                                    <br />
+                                    <LinkedinButton url={link.url} />&nbsp;&nbsp;&nbsp;<strong>{link.url}</strong>
+                                    <br /><br />
+                                  </Segment>)))}
+                          </span>}
                     </span>
-                  ) : null}
+                  )}
                 </span>
               ))}
             </Grid.Column>

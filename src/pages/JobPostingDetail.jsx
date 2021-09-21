@@ -47,7 +47,8 @@ export default function JobPostingDetail() {
               <Grid.Row>
                 <DateLabel value={new Date(jobPosting.postingDate).toDateString()} />
                 <br /><br /><br />
-                <Button compact circular size="medium" color="yellow" icon="bookmark" floated="right" onClick={() => handleAddToFavorites(jobPosting)} />
+
+                <Button compact circular color="yellow" icon="bookmark" floated="right" onClick={() => handleAddToFavorites(jobPosting)} />
                 <Button compact circular  color="violet" content="Make Passive" floated="right" onClick={() => handleMakeActiveOrPassive(jobPosting.id, false)} />                 
               </Grid.Row>
               <Grid.Row>                                 
@@ -70,8 +71,7 @@ export default function JobPostingDetail() {
                 <br />
 
                 {jobPosting.jobDescription}
-                <br />
-                <br />
+                <br /><br />
                 <ul>
                   <li>
                     <strong>City</strong>

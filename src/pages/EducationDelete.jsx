@@ -20,13 +20,10 @@ export default function EducationDelete() {
   useEffect(() => {
     resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
     resumeService.getById(id).then((result) => setResume(result.data.data));
-  }, []);
+  }, [resume]);
 
   const handleModal = (value) => {
     setOpen(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (educationId) => {    
@@ -46,34 +43,34 @@ export default function EducationDelete() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <span>
-                  {resume.id == id ? (
+                  {resume.id == id && (
                     <span key={resume.id}>
                       {resume.educations.length === 0
-                      ? <Segment raised textAlign="center" ><Header color="pink" content="No education has been added to the resume yet." /></Segment>
-                      : <span>
-                        <DateLabel value={new Date().toDateString()} />
-                        <br /><br /><br />
+                        ? <Segment raised textAlign="center" ><Header color="pink" content="No education has been added to the resume yet." /></Segment>
+                        : <span>
+                            <DateLabel value={new Date().toDateString()} />
+                            <br /><br /><br />
 
-                        {resume.educations.map((education) => (
-                          <Segment raised>
-                            <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(education.id)} />
-                            <br />
-                            <strong>{education.nameOfEducationalInstitution}</strong>
-                            <br />
-                            {education.degree} ・ {education.department}
-                            <br />
-                            <span className="extra">
-                              {new Date(education.startingDate).getFullYear()}
-                              &nbsp;-&nbsp;
-                              {education.graduationDate === "Devam ediyor."
-                              ? "Continues"
-                              : new Date(education.graduationDate).getFullYear()}
-                            </span>
-                            <br /><br />
-                          </Segment>))}
-                        </span>}
+                            {resume.educations.map((education) => (
+                              <Segment raised>
+                                <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(education.id)} />
+                                <br />
+                                <strong>{education.nameOfEducationalInstitution}</strong>
+                                <br />
+                                {education.degree} ・ {education.department}
+                                <br />
+                                <span className="extra">
+                                  {new Date(education.startingDate).getFullYear()}
+                                  &nbsp;-&nbsp;
+                                  {education.graduationDate === "Devam ediyor."
+                                    ? "Continues"
+                                    : new Date(education.graduationDate).getFullYear()}
+                                </span>
+                                <br /><br />
+                              </Segment>))}
+                          </span>}
                     </span>
-                  ) : null}
+                  )}
                 </span>
               ))}
             </Grid.Column>

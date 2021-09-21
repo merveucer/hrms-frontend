@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
+import { NavLink } from "react-router-dom";
 import Headline from "../layouts/Headline";
 import ResumeService from "../services/resumeService";
-import { Container, Grid } from "semantic-ui-react";
-import ButtonsOfResumeDetailsEdit from "../layouts/ButtonsOfResumeDetailsEdit";
+import ButtonsOfEdit from "../layouts/ButtonsOfEdit";
+import { Container, Grid, Button } from "semantic-ui-react";
 
 export default function ResumeDetailsEdit() {
   let { id } = useParams();
@@ -25,47 +26,47 @@ export default function ResumeDetailsEdit() {
           <Grid.Row>
             <Grid.Column width="5" />
             <Grid.Column width="6">
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit 
                 content="Link"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/resumeDetails/resume/${resume.id}/link/add`}
-                secondTo={`/resumeDetails/resume/${resume.id}/link/delete`}
+                firstTo={`/candidates/resume/${resume.id}/link/add`}
+                secondTo={`/candidates/resume/${resume.id}/link/delete`}
               />
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit
                 content="Cover Letter"
                 firstIcon="add"
                 secondIcon="pencil alternate"
-                firstTo={`/resumeDetails/resume/candidate/${resume.candidate?.id}/coverLetter/add`}
-                secondTo={`/resumeDetails/resume/candidate/${resume.candidate?.id}/coverLetter/edit`}
+                firstTo={`/candidates/candidate/${resume.candidate?.id}/coverLetter/add`}
+                secondTo={`/candidates/candidate/${resume.candidate?.id}/coverLetter/edit`}
               />
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit
                 content="Education"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/resumeDetails/resume/${resume.id}/education/add`}
-                secondTo={`/resumeDetails/resume/${resume.id}/education/delete`}
+                firstTo={`/candidates/resume/${resume.id}/education/add`}
+                secondTo={`/candidates/resume/${resume.id}/education/delete`}
               />
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit
                 content="Experience"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/resumeDetails/resume/${resume.id}/experience/add`}
-                secondTo={`/resumeDetails/resume/${resume.id}/experience/delete`}
+                firstTo={`/candidates/resume/${resume.id}/experience/add`}
+                secondTo={`/candidates/resume/${resume.id}/experience/delete`}
               />
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit
                 content="Language"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/resumeDetails/resume/${resume.id}/languageLevel/add`}
-                secondTo={`/resumeDetails/resume/${resume.id}/languageLevel/delete`}
+                firstTo={`/candidates/resume/${resume.id}/languageLevel/add`}
+                secondTo={`/candidates/resume/${resume.id}/languageLevel/delete`}
               />
-              <ButtonsOfResumeDetailsEdit
+              <ButtonsOfEdit
                 content="Skill"
                 firstIcon="add"
                 secondIcon="trash"
-                firstTo={`/resumeDetails/resume/${resume.id}/skill/add`}
-                secondTo={`/resumeDetails/resume/${resume.id}/skill/delete`}
+                firstTo={`/candidates/resume/${resume.id}/skill/add`}
+                secondTo={`/candidates/resume/${resume.id}/skill/delete`}
               />
             </Grid.Column>
             <Grid.Column width="5" />

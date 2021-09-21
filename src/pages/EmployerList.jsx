@@ -6,17 +6,17 @@ import { Card, Header } from "semantic-ui-react";
 export default function EmployerList() {
   const [employers, setEmployers] = useState([]);
 
-  let emmployerService = new EmployerService();
+  let employerService = new EmployerService();
 
   useEffect(() => {
-    emmployerService.getAllByIsConfirmedAndUserConfirmationTypeId(true, 1).then((result) => setEmployers(result.data.data));
+    employerService.getAllByIsConfirmedAndUserConfirmationTypeIdSortedByCompanyName(true, 1).then((result) => setEmployers(result.data.data));
   }, []);
 
   return (
     <Card.Group itemsPerRow="2">
       {employers.map((employer) => (
         <Card raised key={employer.id}>
-          <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}`}>
+          <Card.Content textAlign="center" as={NavLink} to={`/employers/employer/${employer.id}/`}>
             <Card.Header>
               <Header as="h3" color="violet" content={employer.companyName} />
             </Card.Header>

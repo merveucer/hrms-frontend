@@ -51,6 +51,7 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
     } else if (type === "byEmployer") {
       jobPostingService.getAllActiveOnesByEmployerIdSortedByPostingDate(id).then((result) => setJobPostings(result.data.data));
     }
+
   }, [pageNo, pageSize, numberOfData]);
 
   const cityOptions = [{value: 0, text: "City"}];
@@ -81,7 +82,7 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
     value: workingType.id,
   })));
 
-  const handleAddToFavorites = (jobPosting) => {
+  const handleAddToFavorites = (jobPosting) => {    
     favoriteJobPostingService.add({jobPosting, candidate:{id: 8}}); // TODO: candidateId
   };
 
@@ -139,8 +140,15 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
       {type === "filtered" && <Grid.Row>        
         <Grid.Column width="12" textAlign="center">
           <ButtonsOfPagination
-            previous={() => handlePreviousPage()} next={() => handleNextPage()} pageContent={pageNo + " / " + totalNumberOfPages}
-            pageSizeOne={() => handlePageSize(10)} pageSizeTwo={() => handlePageSize(20)} pageSizeThree={() => handlePageSize(50)} pageSizeFour={() => handlePageSize(100)} pageSizeContent={"Page Size: " + pageSize} />
+            previous={() => handlePreviousPage()}
+            next={() => handleNextPage()}
+            pageContent={pageNo + " / " + totalNumberOfPages}
+            pageSizeOne={() => handlePageSize(10)}
+            pageSizeTwo={() => handlePageSize(20)}
+            pageSizeThree={() => handlePageSize(50)}
+            pageSizeFour={() => handlePageSize(100)}
+            pageSizeContent={"Page Size: " + pageSize}
+          />
         </Grid.Column>
         <Grid.Column width="4" />      
       </Grid.Row>}      
@@ -177,7 +185,7 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
                 </Card.Content>
                 <Card.Content>
                   {type === "recently" && <Icon name="fire" size="big" color="yellow" />}
-                  <Button circular floated="right" color="violet" content="View Detail" as={NavLink} to={`/jobPostings/jobPosting/${jobPosting.id}`} />
+                  <Button circular compact floated="right" color="violet" content="View Detail" as={NavLink} to={`/jobPostings/jobPosting/${jobPosting.id}`} />
                 </Card.Content>
               </Card>
             ))}
@@ -186,11 +194,32 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
 
         {type === "filtered" && <Grid.Column width="4">
           <Form>
-            <Form.Select name="jobTitle" placeholder="Job Title" options={jobTitleOptions} onChange={(event, data) => handleJobTitle(data.value)} />
-            <Form.Select name="city" placeholder="City" options={cityOptions} onChange={(event, data) => handleCity(data.value)} />
-            <Form.Select name="workingTime" placeholder="Working Time" options={workingTimeOptions} onChange={(event, data) => handleWorkingTime(data.value)} />
-            <Form.Select name="workingType" placeholder="Working Type" options={workingTypeOptions} onChange={(event, data) => handleWorkingType(data.value)} />
+            <Form.Select
+              name="jobTitle"
+              placeholder="Job Title"
+              options={jobTitleOptions}
+              onChange={(event, data) => handleJobTitle(data.value)}
+            />
+            <Form.Select
+              name="city"
+              placeholder="City"
+              options={cityOptions}
+              onChange={(event, data) => handleCity(data.value)}
+            />
+            <Form.Select
+              name="workingTime"
+              placeholder="Working Time"
+              options={workingTimeOptions}
+              onChange={(event, data) => handleWorkingTime(data.value)}
+            />
+            <Form.Select
+              name="workingType"
+              placeholder="Working Type"
+              options={workingTypeOptions}
+              onChange={(event, data) => handleWorkingType(data.value)}
+            />
             <br />
+
             <Button circular fluid type="submit" color="yellow" content="Filter" onClick={() => handleFilter()} />
             <br />
             <Button circular fluid color="pink" content="Clear Filter" onClick={() => handleClearFilter()} />

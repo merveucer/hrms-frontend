@@ -22,27 +22,18 @@ export default function CoverLetterEdit() {
   useEffect(() => {    
     resumeService.getByCandidateId(id).then((result) => setResume(result.data.data));
     coverLetterService.getAllByCandidateId(id).then((result) => setCoverLetters(result.data.data));    
-  }, []);
+  }, [coverLetters]);
 
   const handleModalDelete = (value) => {
     setOpenDelete(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleModalDeleteFromResume = (value) => {
     setOpenDeleteFromResume(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleModalAddedToResume = (value) => {
     setOpenAddedToResume(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (coverLetterId) => {
@@ -71,32 +62,26 @@ export default function CoverLetterEdit() {
             <Grid.Column width="3" />
             <Grid.Column width="10">
               {coverLetters.length === 0
-              ? <Segment raised textAlign="center" ><Header color="pink" content="No cover letter has been added to the resume yet." /></Segment>
-              : <span>
-                <DateLabel value={new Date().toDateString()} />
-                <br /><br /><br />
+                ? <Segment raised textAlign="center" ><Header color="pink" content="No cover letter has been added." /></Segment>
+                : <span>
+                    <DateLabel value={new Date().toDateString()} />
+                    <br /><br /><br />
 
-              {coverLetters.map((coverLetter) => (
-                <span key={coverLetter.candidate?.id}>                  
-                  <div className="coverLetterEdit">
-                    <Segment raised>
-                      {resume.id === coverLetter.resume?.id 
-                      ? <Button circular compact content="Remove from Resume" color="pink" floated="right" onClick={() =>  handleDeleteFromResume()} />
-                      : <span>
-                          <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(coverLetter.id)} />
-                          <Button circular compact  content=" Add to Resume" color="pink" floated="right" onClick={() =>  handleAddedToResume(coverLetter.id)} />                          
-                        </span>}                      
-                      <br />
-                      <strong>{coverLetter.name}</strong>
-                      <br />
-                      <br />
-                      {coverLetter.content}
-                      <br />
-                      <br />
-                    </Segment>
-                  </div>
-                </span>))}
-              </span>}              
+                    {coverLetters.map((coverLetter) => (
+                     <div key={coverLetter.candidate?.id} className="coverLetterEdit">
+                        <Segment raised>
+                          {resume.id === coverLetter.resume?.id 
+                            ? <Button circular compact content="Remove from Resume" color="pink" floated="right" onClick={() =>  handleDeleteFromResume()} />
+                            : <span>
+                                <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(coverLetter.id)} />
+                                <Button circular compact  content=" Add to Resume" color="pink" floated="right" onClick={() =>  handleAddedToResume(coverLetter.id)} />                          
+                              </span>}                      
+                          <br />
+                          <strong>{coverLetter.name}</strong>
+                          <br /><br />{coverLetter.content}<br /><br />
+                        </Segment>
+                      </div>))}
+                  </span>}              
             </Grid.Column>
             <Grid.Column width="3" />
           </Grid.Row>

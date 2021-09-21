@@ -20,13 +20,10 @@ export default function SkillDelete() {
   useEffect(() => {
     resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
     resumeService.getById(id).then((result) => setResume(result.data.data));
-  }, []);
+  }, [resume]);
 
   const handleModal = (value) => {
     setOpen(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (skillId) => {    
@@ -46,7 +43,7 @@ export default function SkillDelete() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <span>
-                  {resume.id == id ? (
+                  {resume.id == id && (
                     <span key={resume.id}>
                       {resume.skills.length === 0
                         ? <Segment raised textAlign="center" ><Header color="pink" content="No skill has been added to the resume yet." /></Segment>
@@ -64,7 +61,7 @@ export default function SkillDelete() {
                           ))}
                         </span>}
                     </span>
-                  ) : null}
+                  )}
                 </span>
               ))}
             </Grid.Column>

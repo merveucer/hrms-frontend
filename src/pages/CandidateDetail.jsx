@@ -30,128 +30,116 @@ export default function CandidateDetail() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <Grid key={resume.id}>
-                  {resume.candidate?.id == id ? (
+                  {resume.candidate?.id == id && (
                     <Grid.Row>
                       <Grid.Column>
-                        <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/resumeDetails/resume/${resume.id}/edit`} />
+                        <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/candidates/resume/${resume.id}/edit`} />
+                        <Button circular compact floated="right" color="yellow" icon="cog" as={NavLink} to={`/candidates/candidate/${resume.candidate?.id}/update`} />
                         <Button circular compact floated="right" color="pink" content="Favorites" as={NavLink} to={`/candidates/candidate/${resume.candidate?.id}/favoriteJobPostings`} />
                         {resume.image == null
-                        ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1631524660/user_cwuhzr.svg" />
-                        : <Image circular size="small" src={resume.image?.url} />}
+                          ? <Image circular size="small" src="https://res.cloudinary.com/merveucer/image/upload/v1631964376/user_ckfrbd.svg" />
+                          : <Image circular size="small" src={resume.image?.url} />}
                         <Header>
                           <span className="detail-header">
                             {resume.candidate?.firstName} {resume.candidate?.lastName}
                           </span>
                         </Header>
                         {resume.experiences.length === 0 && resume.educations.length === 0
-                        ? null
-                        : resume.experiences.length === 0
-                          ? <span>{resume.educations[0].department}<br /></span>
-                          : <span>{resume.experiences[0].jobTitle?.title}<br /></span>}
+                          ? null
+                          : resume.experiences.length === 0
+                            ? <span>{resume.educations[0].department}<br /></span>
+                            : <span>{resume.experiences[0].jobTitle?.title}<br /></span>}
                         <Icon name="envelope" />
                         {resume.candidate?.email}
                         <br />
                         {resume.links.length === 0
-                        ? null
-                        : <span><br />{(resume.links.map((link) =>
-                          (link.linkName?.id === 1 
-                          ? <GithubButton url={link.url} />
-                          : <LinkedinButton url={link.url} />)))}</span>}
+                          ? null
+                          : <span>
+                              <br />
+                              {(resume.links.map((link) =>
+                                (link.linkName?.id === 1 
+                                  ? <GithubButton url={link.url} />
+                                  : <LinkedinButton url={link.url} />)))}
+                            </span>}
                         <Divider />                          
 
                         {resume.coverLetter === null && resume.educations.length === 0 && resume.experiences.length === 0 && resume.languageLevels.length === 0 && resume.skills.length === 0
-                        ? null
-                        : <span><br /><DateLabel value={new Date(resume.creationDate).toDateString()} /><br /><br /></span>}
+                          ? null
+                          : <span><br /><DateLabel value={new Date(resume.creationDate).toDateString()} /><br /><br /></span>}
 
                         {resume.coverLetter === null
-                        ? null
-                        : <Segment raised>
-                          <Header as="h5" content="Cover Letter" className="orbitron" />
-                          <br />
-                          {resume.coverLetter?.content}
-                          <br />
-                          <br />
-                        </Segment>}
+                          ? null
+                          : <Segment raised>
+                              <Header as="h5" content="Cover Letter" className="orbitron" />
+                              <br />{resume.coverLetter?.content}<br /><br />
+                            </Segment>}
 
                         {resume.educations.length === 0
                         ? null
                         : <Segment raised>
-                          <Header as="h5" content="Educations" className="orbitron" />
-                          <br />
-                          {resume.educations.map((education) => (
-                            <span>
-                              <strong>{education.nameOfEducationalInstitution}</strong>
-                              <br />
-                              {education.degree} ・ {education.department}
-                              <br />
-                              <span className="extra">
-                                {new Date(education.startingDate).getFullYear()}
-                                &nbsp;-&nbsp;
-                                {education.graduationDate === "Devam ediyor."
-                                  ? "Continues"
-                                  : new Date(education.graduationDate).getFullYear()}
+                            <Header as="h5" content="Educations" className="orbitron" />
+                            <br />
+                            {resume.educations.map((education) => (
+                              <span>
+                                <strong>{education.nameOfEducationalInstitution}</strong>
+                                <br />{education.degree} ・ {education.department}<br />
+                                <span className="extra">
+                                  {new Date(education.startingDate).getFullYear()}
+                                  &nbsp;-&nbsp;
+                                  {education.graduationDate === "Devam ediyor."
+                                    ? "Continues"
+                                    : new Date(education.graduationDate).getFullYear()}
+                                </span>
+                                <br /><br />
                               </span>
-                              <br />
-                              <br />
-                            </span>
-                          ))}
-                        </Segment>}
+                            ))}
+                          </Segment>}
 
                         {resume.experiences.length === 0
                         ? null
                         : <Segment raised>
-                          <Header as="h5" content="Experiences" className="orbitron" />
-                          <br />
-                          {resume.experiences.map((experience) => (
-                            <span>
-                              <strong>{experience.jobTitle?.title}</strong>
-                              <br />
-                              {experience.companyName}
-                              <br />
-                              <span className="extra">
-                                {new Date(experience.startingDate).getMonth()}.{new Date(experience.startingDate).getFullYear()}
-                                &nbsp;-&nbsp;
-                                {experience.terminationDate === "Devam ediyor."
-                                  ? "Continues"
-                                  : new Date(experience.terminationDate).getMonth() + "." + new Date(experience.terminationDate).getFullYear()}
+                            <Header as="h5" content="Experiences" className="orbitron" />
+                            <br />
+                            {resume.experiences.map((experience) => (
+                              <span>
+                                <strong>{experience.jobTitle?.title}</strong>
+                                <br />{experience.companyName}<br />
+                                <span className="extra">
+                                  {new Date(experience.startingDate).getMonth()}.{new Date(experience.startingDate).getFullYear()}
+                                  &nbsp;-&nbsp;
+                                  {experience.terminationDate === "Devam ediyor."
+                                    ? "Continues"
+                                    : new Date(experience.terminationDate).getMonth() + "." + new Date(experience.terminationDate).getFullYear()}
+                                </span>
+                                <br /><br />
                               </span>
-                              <br />
-                              <br />
-                            </span>
-                          ))}
-                        </Segment>}
+                            ))}
+                          </Segment>}
 
                         {resume.languageLevels.length === 0
-                        ? null
-                        : <Segment raised>
-                          <Header as="h5" content="Languages" className="orbitron" />
-                          <br />
-                          {resume.languageLevels.map((languageLevel) => (
-                            <span>
-                              {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
+                          ? null
+                          : <Segment raised>
+                              <Header as="h5" content="Languages" className="orbitron" />
                               <br />
-                              <br />
-                            </span>
-                          ))}
-                        </Segment>}
+                              {resume.languageLevels.map((languageLevel) => (
+                                <span>
+                                  {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
+                                  <br /><br />
+                                </span>
+                              ))}
+                            </Segment>}
 
                         {resume.skills.length === 0
-                        ? null
-                        : <Segment raised>
-                          <Header as="h5" content="Skills" className="orbitron" />
-                          <br />
-                          {resume.skills.map((skill) => (
-                            <span>
-                              ・ {skill.skill}
-                              &nbsp;&nbsp;&nbsp;
-                            </span>
-                          ))}
-                          <br />
-                          <br />
-                        </Segment>}
+                          ? null
+                          : <Segment raised>
+                              <Header as="h5" content="Skills" className="orbitron" />
+                              <br />
+                              {resume.skills.map((skill) => (<span>・ {skill.skill}&nbsp;&nbsp;&nbsp;</span>))}
+                              <br /><br />
+                            </Segment>}
                       </Grid.Column>
                     </Grid.Row>
-                  ) : null}
+                  )}
                 </Grid>
               ))}
             </Grid.Column>

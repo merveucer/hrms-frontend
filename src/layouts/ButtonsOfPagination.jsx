@@ -17,28 +17,28 @@ export default function ButtonsOfPagination({ previous, next, pageContent, pageS
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="genderless"
             onClick={pageSizeOne}
           />
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="genderless"
             onClick={pageSizeTwo}
           />
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="genderless"
             onClick={pageSizeThree}
           />
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="genderless"
             onClick={pageSizeFour}
           />
@@ -47,7 +47,7 @@ export default function ButtonsOfPagination({ previous, next, pageContent, pageS
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="caret left"
             onClick={previous}
           />
@@ -62,7 +62,7 @@ export default function ButtonsOfPagination({ previous, next, pageContent, pageS
           <Button
             circular
             compact
-            color="pink"
+            color="violet"
             icon="caret right"
             onClick={next}
           />

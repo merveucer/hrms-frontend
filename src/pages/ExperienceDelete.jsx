@@ -20,13 +20,10 @@ export default function ExperienceDeelet() {
   useEffect(() => {
     resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
     resumeService.getById(id).then((result) => setResume(result.data.data));
-  }, []);
+  }, [resume]);
 
   const handleModal = (value) => {
     setOpen(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (experienceId) => {    
@@ -46,34 +43,34 @@ export default function ExperienceDeelet() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <span>
-                  {resume.id == id ? (
+                  {resume.id == id && (
                     <span key={resume.id}>
                       {resume.experiences.length === 0
-                      ? <Segment raised textAlign="center" ><Header color="pink" content="No experience has been added to the resume yet." /></Segment>
-                      : <span>
-                        <DateLabel value={new Date().toDateString()} />
-                        <br /><br /><br />
+                        ? <Segment raised textAlign="center" ><Header color="pink" content="No experience has been added to the resume yet." /></Segment>
+                        : <span>
+                            <DateLabel value={new Date().toDateString()} />
+                            <br /><br /><br />
 
-                        {resume.experiences.map((experience) => (
-                          <Segment raised>
-                            <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(experience.id)} />
-                            <br />
-                            <strong>{experience.jobTitle?.title}</strong>
-                            <br />
-                            {experience.companyName}
-                            <br />
-                            <span className="extra">
-                              {new Date(experience.startingDate).getMonth()}.{new Date(experience.startingDate).getFullYear()}
-                              &nbsp;-&nbsp;
-                              {experience.terminationDate === "Devam ediyor."
-                              ? "Continues"
-                              : new Date(experience.terminationDate).getMonth() + "." + new Date(experience.terminationDate).getFullYear()}
-                            </span>
-                            <br /><br />
-                          </Segment>))}
-                        </span>}
+                            {resume.experiences.map((experience) => (
+                              <Segment raised>
+                                <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(experience.id)} />
+                                <br />
+                                <strong>{experience.jobTitle?.title}</strong>
+                                <br />
+                                {experience.companyName}
+                                <br />
+                                <span className="extra">
+                                  {new Date(experience.startingDate).getMonth()}.{new Date(experience.startingDate).getFullYear()}
+                                  &nbsp;-&nbsp;
+                                  {experience.terminationDate === "Devam ediyor."
+                                    ? "Continues"
+                                    : new Date(experience.terminationDate).getMonth() + "." + new Date(experience.terminationDate).getFullYear()}
+                                </span>
+                                <br /><br />
+                              </Segment>))}
+                          </span>}
                     </span>
-                  ) : null}
+                  )}
                 </span>
               ))}
             </Grid.Column>

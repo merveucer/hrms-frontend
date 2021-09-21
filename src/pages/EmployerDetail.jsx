@@ -10,7 +10,7 @@ import DateLabel from './../layouts/DateLabel';
 import { Container, Header, Grid, Divider, Icon, Button } from "semantic-ui-react";
 
 export default function EmployerDetail() {
-  let { id } = useParams();
+  let { id, type } = useParams();
 
   const [employer, setEmployer] = useState({});
   const [updatedEmployers, setUpdatedEmployers] = useState([]);
@@ -21,8 +21,12 @@ export default function EmployerDetail() {
   let userActivationService = new UserActivationService();
 
   useEffect(() => {
-    employerService.getById(id).then((result) => setEmployer(result.data.data));
-    updatedEmployerService.getAll().then((result) => setUpdatedEmployers(result.data.data));
+    if (type == "employer") {
+      employerService.getById(id).then((result) => setEmployer(result.data.data));
+      updatedEmployerService.getAll().then((result) => setUpdatedEmployers(result.data.data));
+    } else if (type == "updatedEmployer") {
+      employerService.getOneThatWaitingForUpdateConfirmationById(id).then((result) => setEmployer(result.data.data));
+    }    
     userActivationService.getByUserId(id).then((result) => setUserActivation(result.data.data));
   }, []);
 
@@ -38,18 +42,13 @@ export default function EmployerDetail() {
               <Grid.Row>
                 <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
                 <br /><br /><br />
-                <Button circular compact floated="right" color="yellow" icon="pencil alternate" as={NavLink} to={`/employers/employer/${id}/update`}  />
-
-                {updatedEmployers.map((updatedEmployer) => (
-                  updatedEmployer.employer.id == id 
-                  ? <Button circular compact basic disabled color="black" floated="right" content="Waiting for Update Confirmation" />
-                  : null
-                ))}                                
+                <Button circular compact floated="right" color="yellow" icon="cog" as={NavLink} to={`/employers/employer/${id}/update`}  />
+                <Button compact circular floated="right" color="violet" content="Post a Job" as={NavLink} to={"/jobPosting/add"} />                               
               </Grid.Row>
               <Grid.Row>
                   <Header>
                   <span className="detail-header">
-                    <strong>{employer.companyName}</strong>
+                    {employer.companyName}
                   </span>
                   </Header>
                   <Icon name="linkify" />
@@ -60,6 +59,11 @@ export default function EmployerDetail() {
                   <br />
                   <Icon name="phone" />
                   {employer.phoneNumber}
+                  
+                  {updatedEmployers.map((updatedEmployer) => (
+                    updatedEmployer.employer.id == id &&
+                    <span><br /><br /><Button circular compact basic disabled fluid color="black" content="Waiting for Update Confirmation" /></span>
+                  ))}
                   <Divider />
                   <br />  
 

@@ -11,23 +11,24 @@ import JobPostingDetail from "./../pages/JobPostingDetail";
 import CandidateDetail from "./../pages/CandidateDetail";
 import EmployerDetail from "./../pages/EmployerDetail";
 import JobPostingAdd from "./../pages/JobPostingAdd";
-import CandidateAdd from './../pages/CandidateAdd';
-import EmployerAdd from './../pages/EmployerAdd';
-import ResumeDetailsEdit from './../pages/ResumeDetailsEdit';
-import LinkAdd from './../pages/LinkAdd';
-import CoverLetterAdd from './../pages/CoverLetterAdd';
-import EducationAdd from './../pages/EducationAdd';
-import ExperienceAdd from './../pages/ExperienceAdd';
-import LanguageLevelAdd from './../pages/LanguageLevelAdd';
-import SkillAdd from './../pages/SkillAdd';
-import LinkDelete from './../pages/LinkDelete';
-import CoverLetterEdit from './../pages/CoverLetterEdit';
-import EducationDelete from './../pages/EducationDelete';
-import ExperienceDelete from './../pages/ExperienceDelete';
-import LanguageLevelDelete from './../pages/LanguageLevelDelete';
-import SkillDelete from './../pages/SkillDelete';
-import EmployerUpdate from './../pages/EmployerUpdate';
-import FavoriteJobPostingLayout from './FavotireJobPostingLayout';
+import CandidateAdd from "./../pages/CandidateAdd";
+import EmployerAdd from "./../pages/EmployerAdd";
+import ResumeDetailsEdit from "./../pages/ResumeDetailsEdit";
+import LinkAdd from "./../pages/LinkAdd";
+import CoverLetterAdd from "./../pages/CoverLetterAdd";
+import EducationAdd from "./../pages/EducationAdd";
+import ExperienceAdd from "./../pages/ExperienceAdd";
+import LanguageLevelAdd from "./../pages/LanguageLevelAdd";
+import SkillAdd from "./../pages/SkillAdd";
+import LinkDelete from "./../pages/LinkDelete";
+import CoverLetterEdit from "./../pages/CoverLetterEdit";
+import EducationDelete from "./../pages/EducationDelete";
+import ExperienceDelete from "./../pages/ExperienceDelete";
+import LanguageLevelDelete from "./../pages/LanguageLevelDelete";
+import SkillDelete from "./../pages/SkillDelete";
+import CandidateUpdate from "./../pages/CandidateUpdate";
+import EmployerUpdate from "./../pages/EmployerUpdate";
+import FavoriteJobPostingLayout from "./FavotireJobPostingLayout";
 import AdminLayout from "./adminLayouts/AdminLayout";
 import CompanyStaffAdd from "./../pages/adminPages/CompanyStaffAdd";
 import CompanyStaffUpdate from "./../pages/adminPages/CompanyStaffUpdate";
@@ -56,35 +57,37 @@ export default function Dashboard() {
 
       <Route exact path="/" component={HomeLayout} />
       <Route exact path="/home" component={HomeLayout} />
+      <Route exact path="/jobPosting/add" component={JobPostingAdd} />
       <Route exact path="/jobPostings" component={JobPostingLayout} />
       <Route exact path="/jobPostings/jobPosting/:id" component={JobPostingDetail} />
-      <Route exact path="/jobPosting/add" component={JobPostingAdd} />
+      <Route exact path="/candidate/add" component={CandidateAdd} />
       <Route exact path="/candidates" component={CandidateLayout} />
       <Route exact path="/candidates/candidate/:id" component={CandidateDetail} />
+      <Route exact path="/candidates/candidate/:id/update" component={CandidateUpdate} />
       <Route exact path="/candidates/candidate/:id/favoriteJobPostings" component={FavoriteJobPostingLayout} />
-      <Route exact path="/candidate/add" component={CandidateAdd} />
-      <Route exact path="/employers" component={EmployerLayout} />
-      <Route exact path="/employers/employer/:id" component={EmployerDetail} />
-      <Route exact path="/employers/employer/:id/update" component={EmployerUpdate} />
+      <Route exact path="/candidates/resume/:id/edit" component={ResumeDetailsEdit} />
+      <Route exact path="/candidates/resume/:id/link/add" component={LinkAdd} />
+      <Route exact path="/candidates/resume/:id/link/delete" component={LinkDelete} />
+      <Route exact path="/candidates/candidate/:id/coverLetter/add" component={CoverLetterAdd} />
+      <Route exact path="/candidates/candidate/:id/coverLetter/edit" component={CoverLetterEdit} />
+      <Route exact path="/candidates/resume/:id/education/add" component={EducationAdd} />
+      <Route exact path="/candidates/resume/:id/education/delete" component={EducationDelete} />
+      <Route exact path="/candidates/resume/:id/experience/add" component={ExperienceAdd} />
+      <Route exact path="/candidates/resume/:id/experience/delete" component={ExperienceDelete} />
+      <Route exact path="/candidates/resume/:id/languageLevel/add" component={LanguageLevelAdd} />
+      <Route exact path="/candidates/resume/:id/languageLevel/delete" component={LanguageLevelDelete} />
+      <Route exact path="/candidates/resume/:id/skill/add" component={SkillAdd} />
+      <Route exact path="/candidates/resume/:id/skill/delete" component={SkillDelete} />
       <Route exact path="/employer/add" component={EmployerAdd} />
+      <Route exact path="/employers" component={EmployerLayout} />
+      <Route exact path="/employers/:type/:id/" component={EmployerDetail} />
+      <Route exact path="/employers/employer/:id/update" component={EmployerUpdate} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
-      <Route exact path="/resumeDetails/resume/:id/edit" component={ResumeDetailsEdit} />
-      <Route exact path="/resumeDetails/resume/:id/link/add" component={LinkAdd} />
-      <Route exact path="/resumeDetails/resume/:id/link/delete" component={LinkDelete} />
-      <Route exact path="/resumeDetails/resume/candidate/:id/coverLetter/add" component={CoverLetterAdd} />
-      <Route exact path="/resumeDetails/resume/candidate/:id/coverLetter/edit" component={CoverLetterEdit} />
-      <Route exact path="/resumeDetails/resume/:id/education/add" component={EducationAdd} />
-      <Route exact path="/resumeDetails/resume/:id/education/delete" component={EducationDelete} />
-      <Route exact path="/resumeDetails/resume/:id/experience/add" component={ExperienceAdd} />
-      <Route exact path="/resumeDetails/resume/:id/experience/delete" component={ExperienceDelete} />
-      <Route exact path="/resumeDetails/resume/:id/languageLevel/add" component={LanguageLevelAdd} />
-      <Route exact path="/resumeDetails/resume/:id/languageLevel/delete" component={LanguageLevelDelete} />
-      <Route exact path="/resumeDetails/resume/:id/skill/add" component={SkillAdd} />
-      <Route exact path="/resumeDetails/resume/:id/skill/delete" component={SkillDelete} />
 
       <Route exact path="/adminPanel" component={AdminLayout} />
       <Route exact path="/adminPanel/companyStaff/add" component={CompanyStaffAdd} />
-      <Route exact path="/adminPanel/companyStaff/update" component={CompanyStaffUpdate} />
+      <Route exact path="/adminPanel/companyStaff/:id/update" component={CompanyStaffUpdate} />
+      <Route exact path="/adminPanel/companyStaff/:id/confirm" component={Confirm} />
       <Route exact path="/adminPanel/edit" component={AppDetailsEdit} />
       <Route exact path="/adminPanel/edit/city/add" component={CityAdd} />
       <Route exact path="/adminPanel/edit/city/update" component={CityUpdate} />
@@ -100,7 +103,6 @@ export default function Dashboard() {
       <Route exact path="/adminPanel/edit/workingTime/update" component={WorkingTimeUpdate} />
       <Route exact path="/adminPanel/edit/workingType/add" component={WorkingTypeAdd} />
       <Route exact path="/adminPanel/edit/workingType/update" component={WorkingTypeUpdate} />
-      <Route exact path="/adminPanel/confirm" component={Confirm} />
 
       <Footer />
     </Container>

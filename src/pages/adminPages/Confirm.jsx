@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useParams } from "react-router";
 import Headline from "./../../layouts/Headline";
 import EmployerService from "./../../services/employerService";
 import JobPostingService from "./../../services/jobPostingService";
@@ -7,6 +8,8 @@ import { Container, Grid, Header, Segment } from "semantic-ui-react";
 import CardOfConfirm from "../../layouts/adminLayouts/CardOfConfirm";
 
 export default function Confirm() {
+  let { id } = useParams();
+
   const [employersWaitingForAccountConfirmation, setEmployersWaitingForAccountConfirmation] = useState([]);
   const [employersWaitingForUpdateConfirmation, setEmployersWaitingForUpdateConfirmation] = useState([]);
   const [jobPostingsWaitingForPostingConfirmation, setJobPostingsWaitingForPostingConfirmation] = useState([]);
@@ -37,7 +40,7 @@ export default function Confirm() {
   };
 
   const handleEmployerConfirmation = (employerId, isConfirmed, userConfirmationTypeId) => {
-    employerService.confirm(1, employerId, isConfirmed, userConfirmationTypeId); // TODO: companyStaffId
+    employerService.confirm(id, employerId, isConfirmed, userConfirmationTypeId);
     if (isConfirmed) {
       handleModalConfirmed(true);
     } else {
@@ -46,7 +49,7 @@ export default function Confirm() {
   };
 
   const handleJobPostingConfirmation = (isConfirmed, jobPostingConfirmationTypeId, jobPostingId) => {
-    jobPostingService.confirm(1, isConfirmed, jobPostingConfirmationTypeId, jobPostingId); // TODO: companyStaffId
+    jobPostingService.confirm(id, isConfirmed, jobPostingConfirmationTypeId, jobPostingId);
     if (isConfirmed) {
       handleModalConfirmed(true);
     } else {
@@ -57,12 +60,12 @@ export default function Confirm() {
   return (
     <div>
       <Container className="content">
-        <Headline content="Confirm" />
+        <Headline content="Confirmations" />
 
         <Grid>
           <Grid.Row columns="3">
             <Grid.Column>
-              <Header size="large" textAlign="center" content="Account Confirmation" className="orbitron" />
+              <Header size="large" textAlign="center" content="Account Confirmations" className="orbitron" />
               <Segment basic color="pink" />
               {employersWaitingForAccountConfirmation.map((employer) => (
                 <CardOfConfirm
@@ -73,7 +76,7 @@ export default function Confirm() {
                 />))}
             </Grid.Column>
             <Grid.Column>
-              <Header size="large" textAlign="center" content="Update Confirmation" className="orbitron" />
+              <Header size="large" textAlign="center" content="Update Confirmations" className="orbitron" />
               <Segment basic color="pink" />
               {employersWaitingForUpdateConfirmation.map((employer) => (
                 <CardOfConfirm
@@ -84,7 +87,7 @@ export default function Confirm() {
                 />))}
             </Grid.Column>
             <Grid.Column>
-              <Header size="large" textAlign="center" content="Posting Confirmation" className="orbitron" />
+              <Header size="large" textAlign="center" content="Posting Confirmations" className="orbitron" />
               <Segment basic color="pink" />
               {jobPostingsWaitingForPostingConfirmation.map((jobPosting) => (
                 <CardOfConfirm

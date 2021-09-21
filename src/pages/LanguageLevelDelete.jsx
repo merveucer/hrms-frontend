@@ -20,13 +20,10 @@ export default function LanguageLevelDelete() {
   useEffect(() => {
     resumeService.getAllResumesDetailsByActivatedCandidate().then((result) => setResumes(result.data.data));
     resumeService.getById(id).then((result) => setResume(result.data.data));
-  }, []);
+  }, [resume]);
 
   const handleModal = (value) => {
     setOpen(value)
-    if (value === false) {
-      window.location.reload();
-    }
   };
 
   const handleDelete = (languageLevelId) => {    
@@ -46,25 +43,25 @@ export default function LanguageLevelDelete() {
             <Grid.Column width="10">
               {resumes.map((resume) => (
                 <span>
-                  {resume.id == id ? (
+                  {resume.id == id && (
                     <span key={resume.id}>
                       {resume.languageLevels.length === 0
                         ? <Segment raised textAlign="center" ><Header color="pink" content="No language has been added to the resume yet." /></Segment>
                         : <span>
-                          <DateLabel value={new Date().toDateString()} />
-                          <br /><br /><br />
+                            <DateLabel value={new Date().toDateString()} />
+                            <br /><br /><br />
 
-                          {resume.languageLevels.map((languageLevel) => (
-                            <Segment raised>
-                              <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(languageLevel.id)} />
-                              <br />
-                              {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
-                              <br /><br />
-                            </Segment>                
-                          ))}
-                        </span>}
+                            {resume.languageLevels.map((languageLevel) => (
+                              <Segment raised>
+                                <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(languageLevel.id)} />
+                                <br />
+                                {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
+                                <br /><br />
+                              </Segment>                
+                            ))}
+                          </span>}
                     </span>
-                  ) : null}
+                  )}
                 </span>
               ))}
             </Grid.Column>
