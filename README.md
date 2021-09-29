@@ -56,7 +56,7 @@
 
 ---
 
-![postAJob](https://res.cloudinary.com/merveucer/image/upload/v1632492138/gitHub/postAJob_t7eipb.png)
+![postAJob](https://res.cloudinary.com/merveucer/image/upload/v1632890708/gitHub/postAJob_ituncv.png)
 
 ---
 

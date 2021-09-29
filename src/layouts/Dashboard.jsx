@@ -57,7 +57,6 @@ export default function Dashboard() {
 
       <Route exact path="/" component={HomeLayout} />
       <Route exact path="/home" component={HomeLayout} />
-      <Route exact path="/jobPosting/add" component={JobPostingAdd} />
       <Route exact path="/jobPostings" component={JobPostingLayout} />
       <Route exact path="/jobPostings/jobPosting/:id" component={JobPostingDetail} />
       <Route exact path="/candidate/add" component={CandidateAdd} />
@@ -82,6 +81,7 @@ export default function Dashboard() {
       <Route exact path="/employers" component={EmployerLayout} />
       <Route exact path="/employers/:type/:id/" component={EmployerDetail} />
       <Route exact path="/employers/employer/:id/update" component={EmployerUpdate} />
+      <Route exact path="/employers/employer/:id/jobPosting/add" component={JobPostingAdd} />
       <Route exact path="/aboutUs" component={AboutUsLayout} />
 
       <Route exact path="/adminPanel" component={AdminLayout} />

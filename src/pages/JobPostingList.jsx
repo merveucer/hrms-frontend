@@ -10,7 +10,6 @@ import ButtonsOfPagination from "../layouts/ButtonsOfPagination";
 import { Card, Label, Button, Icon, Grid, Form } from "semantic-ui-react";
 
 export default function JobPostingList({ type, itemsPerRow, id }) {
-
   const [jobPostings, setJobPostings] = useState([]);
   const [favoriteJobPostings, setFavoriteJobPostings] = useState([]);
   const [cities, setCities] = useState([]);
@@ -220,7 +219,7 @@ export default function JobPostingList({ type, itemsPerRow, id }) {
             />
             <br />
 
-            <Button circular fluid type="submit" color="yellow" content="Filter" onClick={() => handleFilter()} />
+            <Button circular fluid color="yellow" content="Filter" onClick={() => handleFilter()} />
             <br />
             <Button circular fluid color="pink" content="Clear Filter" onClick={() => handleClearFilter()} />
           </Form>

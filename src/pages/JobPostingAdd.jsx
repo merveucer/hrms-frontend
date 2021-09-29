@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import Headline from "./../layouts/Headline";
@@ -14,7 +15,8 @@ import { Container, Grid, Label, Form, Button} from "semantic-ui-react";
 
 
 export default function JobPostingAdd() {
-  const [employers, setEmployers] = useState([]);
+  let { id } = useParams();
+
   const [jobTitles, setJobTitles] = useState([]);
   const [cities, setCities] = useState([]);
   const [workingTimes, setWorkingTimes] = useState([]);
@@ -22,25 +24,17 @@ export default function JobPostingAdd() {
   const [open, setOpen] = useState(false);
 
   let jobPostingService = new JobPostingService();
-  let employerService = new EmployerService();
   let jobTitleService = new JobTitleService();
   let cityService = new CityService();
   let workingTimeService = new WorkingTimeService();
   let workingTypeService = new WorkingTypeService();
 
   useEffect(() => {
-    employerService.getAllByIsConfirmedAndUserConfirmationTypeIdSortedByCompanyName(true, 1).then((result) => setEmployers(result.data.data));
     jobTitleService.getAll().then((result) => setJobTitles(result.data.data));
     cityService.getAll().then((result) => setCities(result.data.data));
     workingTimeService.getAll().then((result) => setWorkingTimes(result.data.data));
     workingTypeService.getAll().then((result) => setWorkingTypes(result.data.data));
   }, []);
-
-  const employerOptions = employers.map((employer) => ({
-    key: employer.id,
-    text: employer.companyName,
-    value: employer,
-  }));
 
   const jobTitleOptions = jobTitles.map((jobTitle) => ({
     key: jobTitle.id,
@@ -67,7 +61,7 @@ export default function JobPostingAdd() {
   }));
 
   const initialValues = {
-    employer: "",
+    employer: { id : id },
     jobTitle: "",
     city: "",
     workingTime: "",
@@ -80,7 +74,6 @@ export default function JobPostingAdd() {
   };
 
   const validationSchema = Yup.object({
-    employer: Yup.object().required("Required Field"),
     jobTitle: Yup.object().required("Required Field"),
     city: Yup.object().required("Required Field"),
     workingTime: Yup.object().required("Required Field"),
@@ -129,40 +122,21 @@ export default function JobPostingAdd() {
               <Formik>
                 <Form onSubmit={formik.handleSubmit}>
                   <Form.Select
-                    name="employer"
-                    label="Employer"
-                    placeholder=""
-                    options={employerOptions}
-                    onChange={(event, data) => handleChange("employer", data.value)}             
-                    value={formik.values.employer}
+                    name="jobTitle"
+                    label="Job Title"
+                    options={jobTitleOptions}
+                    onChange={(event, data) => handleChange("jobTitle", data.value)}
+                    value={formik.values.jobTitle}
                   />
-                  {formik.errors.employer && formik.touched.employer && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.employer} /><br /><br /></span>}
-                  <Form.Group widths="equal">
-                    <Form.Select
-                      name="jobTitle"
-                      label="Job Title"
-                      options={jobTitleOptions}
-                      onChange={(event, data) => handleChange("jobTitle", data.value)}
-                      value={formik.values.jobTitle}
-                    />
-                    <Form.Select
-                      name="city"
-                      label="City"
-                      options={cityOptions}
-                      onChange={(event, data) =>handleChange("city", data.value)}
-                      value={formik.values.city}
-                    />
-                  </Form.Group>
-                  <Grid>
-                    <Grid.Row columns="equal">
-                      <Grid.Column>
-                        {formik.errors.jobTitle && formik.touched.jobTitle && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.jobTitle} /><br /><br /></span>}
-                      </Grid.Column>
-                      <Grid.Column>
-                        {formik.errors.city && formik.touched.city && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.city} /><br /><br /></span>}
-                      </Grid.Column>
-                    </Grid.Row>
-                  </Grid>
+                  {formik.errors.jobTitle && formik.touched.jobTitle && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.jobTitle} /><br /><br /></span>}
+                  <Form.Select
+                    name="city"
+                    label="City"
+                    options={cityOptions}
+                    onChange={(event, data) =>handleChange("city", data.value)}
+                    value={formik.values.city}
+                  />
+                  {formik.errors.city && formik.touched.city && <span><Label basic pointing color="pink" className="orbitron" content={formik.errors.city} /><br /><br /></span>}
                   <Form.Group widths="equal">
                     <Form.Select
                       name="workingTime"

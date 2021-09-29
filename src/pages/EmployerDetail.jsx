@@ -43,7 +43,7 @@ export default function EmployerDetail() {
                 <DateLabel value={"Joined in " + new Date(userActivation.isActivatedDate).getFullYear()} />
                 <br /><br /><br />
                 <Button circular compact floated="right" color="yellow" icon="cog" as={NavLink} to={`/employers/employer/${id}/update`}  />
-                <Button compact circular floated="right" color="violet" content="Post a Job" as={NavLink} to={"/jobPosting/add"} />                               
+                <Button compact circular floated="right" color="violet" content="Post a Job" as={NavLink} to={`/employers/employer/${id}/jobPosting/add`} />
               </Grid.Row>
               <Grid.Row>
                   <Header>
