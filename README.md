@@ -24,7 +24,7 @@
 
 ---
 
-![candidate](https://res.cloudinary.com/merveucer/image/upload/v1632492135/gitHub/candidate_vymgo6.png)
+![candidate](https://res.cloudinary.com/merveucer/image/upload/v1632898092/gitHub/candidate_u1stre.png)
 
 ---
 

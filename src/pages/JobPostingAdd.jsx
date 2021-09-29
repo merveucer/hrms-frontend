@@ -8,7 +8,6 @@ import JobTitleService from "../services/jobTitleService";
 import CityService from "../services/cityService";
 import WorkingTimeService from "../services/workingTimeService";
 import WorkingTypeService from "../services/workingTypeService";
-import EmployerService from "../services/employerService";
 import DateLabel from "./../layouts/DateLabel";
 import MessageModal from "./../layouts/MessageModal";
 import { Container, Grid, Label, Form, Button} from "semantic-ui-react";
