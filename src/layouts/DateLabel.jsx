@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, Grid } from 'semantic-ui-react';
+import { Label, Grid } from "semantic-ui-react";
 
 export default function DateLabel({value}) {
   return (

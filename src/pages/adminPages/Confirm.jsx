@@ -4,8 +4,8 @@ import Headline from "./../../layouts/Headline";
 import EmployerService from "./../../services/employerService";
 import JobPostingService from "./../../services/jobPostingService";
 import MessageModal from "./../../layouts/MessageModal";
-import { Container, Grid, Header, Segment } from "semantic-ui-react";
 import CardOfConfirm from "../../layouts/adminLayouts/CardOfConfirm";
+import { Container, Grid, Header, Segment } from "semantic-ui-react";
 
 export default function Confirm() {
   let { id } = useParams();

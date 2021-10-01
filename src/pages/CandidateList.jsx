@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import ResumeService from "./../services/resumeService";
 import GithubButton from "./../layouts/GithubButton";
 import LinkedinButton from "./../layouts/LinkedinButton";
-import { Button, Card, Divider, Icon, Image, Label, Segment } from "semantic-ui-react";
+import { Card, Divider, Image} from "semantic-ui-react";
 
 export default function CandidateList() {
   const [resumes, setResumes] = useState([]);

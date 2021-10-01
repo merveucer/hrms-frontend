@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
-import { NavLink } from "react-router-dom";
 import Headline from "../layouts/Headline";
 import ResumeService from "../services/resumeService";
 import ButtonsOfEdit from "../layouts/ButtonsOfEdit";
-import { Container, Grid, Button } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 
 export default function ResumeDetailsEdit() {
   let { id } = useParams();

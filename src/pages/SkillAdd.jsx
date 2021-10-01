@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import Headline from "../layouts/Headline";
 import DateLabel from "./../layouts/DateLabel";
 import SkillService from "./../services/skillService";
-import ResumeService from './../services/resumeService';
+import ResumeService from "./../services/resumeService";
 import MessageModal from "./../layouts/MessageModal";
 import { Container, Grid, Form, Label, Button } from "semantic-ui-react";
 

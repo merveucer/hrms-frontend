@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Router, useParams } from "react-router";
+import { useParams } from "react-router";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import Headline from "../layouts/Headline";
 import DateLabel from "./../layouts/DateLabel";
-import CoverLetterService from './../services/coverLetterService';
+import CoverLetterService from "./../services/coverLetterService";
 import MessageModal from "./../layouts/MessageModal";
 import { Container, Grid, Form, Label, Button  } from "semantic-ui-react";
 

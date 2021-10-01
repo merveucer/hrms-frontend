@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { Grid, Button } from 'semantic-ui-react';
+import { Grid, Button } from "semantic-ui-react";
 
 export default function ButtonsOfEdit({ content, firstIcon, secondIcon, firstTo, secondTo }) {
   return (

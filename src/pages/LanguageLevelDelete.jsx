@@ -3,8 +3,9 @@ import { useParams } from "react-router";
 import Headline from "../layouts/Headline";
 import DateLabel from "../layouts/DateLabel";
 import ResumeService from "../services/resumeService";
-import LanguageLevelService from '../services/languageLevelService';
-import MessageModal from '../layouts/MessageModal';
+import LanguageLevelService from "../services/languageLevelService";
+import MessageModal from "../layouts/MessageModal";
+import LanguageLevelIcons from "./../layouts/LanguageLevelIcons";
 import { Container, Grid, Segment, Button, Header } from "semantic-ui-react";
 
 export default function LanguageLevelDelete() {
@@ -55,8 +56,10 @@ export default function LanguageLevelDelete() {
                               <Segment raised>
                                 <Button circular compact  icon="trash" color="pink" floated="right" onClick={() =>  handleDelete(languageLevel.id)} />
                                 <br />
-                                {languageLevel.language?.language} <span className="extra">{languageLevel.level?.level}</span>
-                                <br /><br />
+                                <LanguageLevelIcons level={languageLevel.level?.level} />
+                                  &nbsp;&nbsp;
+                                  {languageLevel.language?.language}
+                                  <br /><br />
                               </Segment>                
                             ))}
                           </span>}

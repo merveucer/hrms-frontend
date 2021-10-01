@@ -1,8 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Headline from "../Headline";
-import { Button, Container, Grid } from "semantic-ui-react";
 import CompanyStaffUpdateButton from "../../pages/adminPages/CompanyStaffUpdateButton";
+import { Button, Container, Grid } from "semantic-ui-react";
 
 export default function AdminLayout() {
   let id = 1; // TODO: companyStaffId

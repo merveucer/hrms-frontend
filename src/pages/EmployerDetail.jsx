@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useParams } from "react-router";
 import EmployerService from "./../services/employerService";
-import UpdatedEmployerService from './../services/updatedEmployerService';
+import UpdatedEmployerService from "./../services/updatedEmployerService";
 import UserActivationService from "./../services/userActivationService";
 import Headline from "../layouts/Headline";
 import JobPostingList from "./JobPostingList";
-import DateLabel from './../layouts/DateLabel';
+import DateLabel from "./../layouts/DateLabel";
 import { Container, Header, Grid, Divider, Icon, Button } from "semantic-ui-react";
 
 export default function EmployerDetail() {

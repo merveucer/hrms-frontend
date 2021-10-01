@@ -3,10 +3,10 @@ import { useParams } from "react-router";
 import Headline from "../layouts/Headline";
 import DateLabel from "../layouts/DateLabel";
 import ResumeService from "../services/resumeService";
-import LinkService from '../services/linkService';
-import GithubButton from '../layouts/GithubButton';
-import LinkedinButton from '../layouts/LinkedinButton';
-import MessageModal from '../layouts/MessageModal';
+import LinkService from "../services/linkService";
+import GithubButton from "../layouts/GithubButton";
+import LinkedinButton from "../layouts/LinkedinButton";
+import MessageModal from "../layouts/MessageModal";
 import { Container, Grid, Segment, Button, Header } from "semantic-ui-react";
 
 export default function LinkDelete() {

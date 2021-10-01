@@ -4,10 +4,10 @@ import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import Headline from "../layouts/Headline";
 import DateLabel from "./../layouts/DateLabel";
-import LinkService from './../services/linkService';
-import LinkNameService from './../services/linkNameService';
-import ResumeService from './../services/resumeService';
-import MessageModal from './../layouts/MessageModal';
+import LinkService from "./../services/linkService";
+import LinkNameService from "./../services/linkNameService";
+import ResumeService from "./../services/resumeService";
+import MessageModal from "./../layouts/MessageModal";
 import { Container, Grid, Form, Label, Button } from "semantic-ui-react";
 
 export default function LinkAdd() {

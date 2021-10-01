@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
 import JobPostingService from "./../services/jobPostingService";
-import FavoriteJobPostingService from './../services/favoriteJobPostingService';
+import FavoriteJobPostingService from "./../services/favoriteJobPostingService";
 import Headline from "../layouts/Headline";
-import DateLabel from './../layouts/DateLabel';
+import DateLabel from "./../layouts/DateLabel";
 import MessageModal from "./../layouts/MessageModal";
 import { Container, Header, Grid, Divider, Icon, Label, Button } from "semantic-ui-react";
 

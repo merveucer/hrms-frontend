@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Button, Header } from "semantic-ui-react";
 import CompanyStaffService from "./../../services/companyStaffService";
+import { Button, Header } from "semantic-ui-react";
 
 export default function CompanyStaffUpdateButton({ id }) {
   const [companyStaff, setCompanyStaff] = useState({});
